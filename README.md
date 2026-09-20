@@ -1,7 +1,7 @@
 # Portofolio Web - Theresia Oktaviani Samosir
 
-Tugas Mandiri Minggu 2 — Mata Kuliah Pemrograman dan Pengujian Aplikasi Web (12S3101)
-Institut Teknologi Del — S1 Sistem Informasi
+Tugas Mandiri Minggu 2 - Mata Kuliah Pemrograman dan Pengujian Aplikasi Web (12S3101)
+Institut Teknologi Del - S1 Sistem Informasi
 
 ## Deskripsi
 
