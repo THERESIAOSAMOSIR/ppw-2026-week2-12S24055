@@ -5,20 +5,17 @@
 }
 
 :root {
-  
+
   --color-paper: #FBF2EF;
   --color-surface: #FFFFFF;
 
-  
   --color-ink: #3A2830;
   --color-ink-muted: #8C6E76;
 
-  
   --color-accent: #B25376;
   --color-accent-dark: #7A3752;
   --color-accent-soft: #FBE1EA;
 
-  
   --color-nav-bg: #C97C97;
 
   --color-border: #F0DCE0;
@@ -50,6 +47,12 @@ a { color: inherit; }
 .site-header {
   position: relative;
   z-index: 10;
+}
+
+/* Warna navbar dipindahkan ke sini dari inline style di HTML,
+   supaya semua override tema tetap terpusat di berkas CSS eksternal. */
+.site-header .navbar {
+  background-color: var(--color-nav-bg);
 }
 
 .header-inner {
@@ -237,6 +240,17 @@ h2 { font-size: clamp(24px, 3.5vw, 30px); margin-bottom: 10px; }
   border-color: var(--color-accent-dark);
 }
 
+.hero-cta .btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Grid Bootstrap (row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4) dipakai
+   langsung di HTML untuk tata letak kartu portofolio, sesuai spesifikasi
+   modul minggu 3. Kelas .portfolio-scroll dan .portfolio-item versi
+   sebelumnya (carousel horizontal manual) sudah tidak dipakai lagi. */
+
 .project-card {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -305,6 +319,12 @@ h2 { font-size: clamp(24px, 3.5vw, 30px); margin-bottom: 10px; }
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
+}
+
+/* Contoh pemakaian pseudo-class struktural :nth-child(),
+   sesuai indikator ketercapaian modul (Advanced Selectors). */
+.skills-list li:nth-child(even) {
+  background-color: var(--color-surface);
 }
 
 .service-form {
