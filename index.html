@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theresia Oktaviani Samosir — Portofolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Theresia Oktaviani Samosir - Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#tentang" class="logo">Theresia Oktaviani Samosir<span class="logo-dot">.</span></a>
-      <nav aria-label="Navigasi utama">
-        <ul class="nav-list">
-          <li><a href="#tentang">Tentang Saya</a></li>
-          <li><a href="#portofolio">Portofolio Karya</a></li>
-          <li><a href="#layanan">Formulir Layanan</a></li>
-        </ul>
-      </nav>
-    </div>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background-color: var(--color-nav-bg);">
+      <div class="container-fluid header-inner">
+        <a href="#tentang" class="navbar-brand logo">Theresia Oktaviani Samosir<span class="logo-dot">.</span></a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio Karya</a></li>
+            <li class="nav-item"><a class="nav-link" href="#layanan">Formulir Layanan</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main>
-
-    <!-- ===================== SECTION 1: TENTANG SAYA ===================== -->
-    <section id="tentang" aria-labelledby="tentang-heading" class="section section-hero">
+<section id="tentang" aria-labelledby="tentang-heading" class="section section-hero">
       <div class="section-inner hero-inner">
         <div class="hero-text">
           <p class="eyebrow">Sistem Informasi · Institut Teknologi Del</p>
@@ -47,6 +57,11 @@
             <li>Mengikuti bootcamp Excel KarirNex — Pivot Table, VLOOKUP, SUMIFS, hingga Data Validation.</li>
             <li>Memimpin tim MARSIADAPARI merancang PanenFair untuk kompetisi SwitchFest 2026.</li>
           </ol>
+
+          <div class="hero-cta mt-4 d-flex flex-wrap gap-3">
+            <a href="#portofolio" class="btn project-btn btn-lg">Lihat Portofolio</a>
+            <a href="#layanan" class="btn btn-outline-secondary btn-lg hero-cta-outline">Hubungi Saya</a>
+          </div>
         </div>
 
         <div class="hero-photo">
@@ -56,78 +71,325 @@
         </div>
       </div>
     </section>
-
-    <!-- ===================== SECTION 2: PORTOFOLIO KARYA ===================== -->
-    <section id="portofolio" aria-labelledby="portofolio-heading" class="section">
+<section id="portofolio" aria-labelledby="portofolio-heading" class="section">
       <div class="section-inner">
         <p class="eyebrow">Rekap Karya</p>
         <h2 id="portofolio-heading">Portofolio Karya</h2>
         <p class="section-desc">
           Rekapitulasi proyek dan kompetisi yang pernah saya kerjakan, beserta peran dan hasilnya.
         </p>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-file-earmark-text"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">Anggota Tim · Analisis Sistem</span>
+                <h3 class="card-title h5">Feature Optimization — BEM IT Del Website (SRS)</h3>
+                <p class="card-text">Dokumen SyRS 60 halaman — Use Case, DFD, BPMN As-Is/To-Be.</p>
+                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalFeatureOpt">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-server"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">Backend Developer</span>
+                <h3 class="card-title h5">JExpress — Package Delivery Management System</h3>
+                <p class="card-text">Aplikasi CLI Java + PostgreSQL, dibangun dengan pendekatan OOP.</p>
+                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalJExpress">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-phone"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">Mobile Developer</span>
+                <h3 class="card-title h5">Animation Catalog App (Flutter)</h3>
+                <p class="card-text">42 animasi, CRUD, integrasi REST API — selesai.</p>
+                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalAnimasi">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-palette"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">UI/UX Designer</span>
+                <h3 class="card-title h5">Affordable Travel Package App Prototype</h3>
+                <p class="card-text">Wireframe &amp; prototipe interaktif (Figma) untuk aplikasi paket travel hemat.</p>
+                <p class="card-text"><small class="text-muted">2025 · Selesai</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalTravel">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-clipboard2-pulse"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">UI/UX Designer</span>
+                <h3 class="card-title h5">Immunization Monitoring System Prototype</h3>
+                <p class="card-text">Prototipe user-centered (Figma) untuk sistem pemantauan imunisasi.</p>
+                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalImunisasi">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-server"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">Backend Developer · Proyek Mandiri</span>
+                <h3 class="card-title h5">EduTrack — Simple LMS Platform</h3>
+                <p class="card-text">Repository API untuk platform LMS sederhana, dikembangkan mandiri.</p>
+                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalEduTrack">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-palette"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">Ketua Tim · UI/UX Designer</span>
+                <h3 class="card-title h5">PanenFair — SwitchFest 2026</h3>
+                <p class="card-text">Proposal &amp; rancangan UI/UX untuk kompetisi UI/UX Design SwitchFest 2026, bersama tim MARSIADAPARI.</p>
+                <p class="card-text"><small class="text-muted">2026 · Masih Berproses</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalPanenFair">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
+<div class="col">
+            <div class="card h-100 shadow-sm project-card">
+              <div class="card-banner">
+                <i class="bi bi-pencil-square"></i>
+              </div>
+              <div class="card-body">
+                <span class="badge project-badge mb-2">Ketua Tim · Penulis</span>
+                <h3 class="card-title h5">NEUROLEKSIA — Brawijaya Essay Competition 2026</h3>
+                <p class="card-text">Esai program rehabilitasi literasi nasional berbasis neurofeedback, dari 9 bab menjadi 6 bab final.</p>
+                <p class="card-text"><small class="text-muted">2026 · Finalis</small></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <button type="button" class="btn btn-sm project-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalBEC">
+                  Lihat Detail
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <table class="project-table">
-          <caption>Riwayat Proyek &amp; Kompetisi Theresia Oktaviani Samosir</caption>
-          <thead>
-            <tr>
-              <th scope="col">Proyek / Kegiatan</th>
-              <th scope="col">Peran</th>
-              <th scope="col">Tahun</th>
-              <th scope="col">Status / Hasil</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">
-                <a class="project-link" href="https://drive.google.com/file/d/147bWBKGHXw5Qsel2Qm55l7Kprxl_e7JM/view?usp=sharing" target="_blank" rel="noopener noreferrer">Feature Optimization — BEM IT Del Website (SRS)</a>
-              </th>
-              <td>Anggota Tim, Analisis Sistem</td>
-              <td>2026</td>
-              <td>Dokumen SyRS 60 halaman selesai — Use Case, DFD, BPMN As-Is/To-Be</td>
-            </tr>
-            <tr>
-              <th scope="row">JExpress — Package Delivery Management System</th>
-              <td>Backend Developer (OOP)</td>
-              <td>2026</td>
-              <td>Aplikasi CLI Java + PostgreSQL selesai</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <a class="project-link" href="https://github.com/TheresiaOktavianiSamosir/animation_collection_iss24055.git" target="_blank" rel="noopener noreferrer">Animation Catalog App (Flutter)</a>
-              </th>
-              <td>Mobile Developer</td>
-              <td>2026</td>
-              <td>42 animasi, CRUD, integrasi REST API — selesai</td>
-            </tr>
-            <tr>
-              <th scope="row">Affordable Travel Package App Prototype</th>
-              <td>UI/UX Designer</td>
-              <td>2025</td>
-              <td>Wireframe &amp; prototipe interaktif (Figma) selesai</td>
-            </tr>
-            <tr>
-              <th scope="row">Immunization Monitoring System Prototype</th>
-              <td>UI/UX Designer (Figma)</td>
-              <td>2026</td>
-              <td>Prototipe user-centered selesai</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <a class="project-link" href="https://github.com/TheresiaOktavianiSamosir/edutrack-api.git" target="_blank" rel="noopener noreferrer">EduTrack — Simple LMS Platform</a>
-              </th>
-              <td>Backend Developer (Proyek Mandiri)</td>
-              <td>2026</td>
-              <td>Repository API selesai dikembangkan</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="4">Total 6 proyek ditampilkan</td>
-            </tr>
-          </tfoot>
-        </table>
+        </div>
 
-        <h3 class="subheading">Keahlian Utama</h3>
+<div class="modal fade" id="modalFeatureOpt" tabindex="-1" aria-labelledby="modalFeatureOptLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalFeatureOptLabel">Feature Optimization — BEM IT Del Website (SRS)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> Anggota Tim, Analisis Sistem</p>
+                <p><strong>Tahun:</strong> 2026</p>
+                <p>Menyusun dokumen SyRS sepanjang 60 halaman, mencakup Use Case Diagram, DFD, serta BPMN As-Is dan To-Be untuk optimasi fitur website BEM IT Del.</p>
+              </div>
+              <div class="modal-footer">
+                <a href="https://drive.google.com/file/d/147bWBKGHXw5Qsel2Qm55l7Kprxl_e7JM/view?usp=sharing"
+                   target="_blank" rel="noopener noreferrer" class="btn project-btn">Lihat Dokumen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalJExpress" tabindex="-1" aria-labelledby="modalJExpressLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalJExpressLabel">JExpress — Package Delivery Management System</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> Backend Developer (OOP)</p>
+                <p><strong>Tahun:</strong> 2026</p>
+                <p>Sistem manajemen pengiriman paket berbasis CLI, dibangun dengan Java dan PostgreSQL menggunakan prinsip Object-Oriented Programming.</p>
+              </div>
+              <div class="modal-footer">
+                <span class="text-muted small">Repository bersifat privat / akademik</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalAnimasi" tabindex="-1" aria-labelledby="modalAnimasiLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalAnimasiLabel">Animation Catalog App (Flutter)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> Mobile Developer</p>
+                <p><strong>Tahun:</strong> 2026</p>
+                <p>Aplikasi katalog animasi berisi 42 koleksi animasi, dilengkapi fitur CRUD penuh dan integrasi REST API untuk pengambilan data dinamis.</p>
+              </div>
+              <div class="modal-footer">
+                <a href="https://github.com/TheresiaOktavianiSamosir/animation_collection_iss24055.git"
+                   target="_blank" rel="noopener noreferrer" class="btn project-btn">Lihat di GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalTravel" tabindex="-1" aria-labelledby="modalTravelLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTravelLabel">Affordable Travel Package App Prototype</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> UI/UX Designer</p>
+                <p><strong>Tahun:</strong> 2025</p>
+                <p>Merancang wireframe dan prototipe interaktif di Figma untuk aplikasi pemesanan paket travel dengan harga terjangkau.</p>
+              </div>
+              <div class="modal-footer">
+                <span class="text-muted small">Tautan Figma tersedia atas permintaan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalImunisasi" tabindex="-1" aria-labelledby="modalImunisasiLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalImunisasiLabel">Immunization Monitoring System Prototype</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> UI/UX Designer (Figma)</p>
+                <p><strong>Tahun:</strong> 2026</p>
+                <p>Merancang prototipe user-centered untuk sistem pemantauan imunisasi, berfokus pada kemudahan input dan pelacakan data oleh petugas kesehatan.</p>
+              </div>
+              <div class="modal-footer">
+                <span class="text-muted small">Tautan Figma tersedia atas permintaan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalEduTrack" tabindex="-1" aria-labelledby="modalEduTrackLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalEduTrackLabel">EduTrack — Simple LMS Platform</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> Backend Developer (Proyek Mandiri)</p>
+                <p><strong>Tahun:</strong> 2026</p>
+                <p>Mengembangkan API untuk platform Learning Management System (LMS) sederhana sebagai proyek pengembangan diri mandiri.</p>
+              </div>
+              <div class="modal-footer">
+                <a href="https://github.com/TheresiaOktavianiSamosir/edutrack-api.git"
+                   target="_blank" rel="noopener noreferrer" class="btn project-btn">Lihat di GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalPanenFair" tabindex="-1" aria-labelledby="modalPanenFairLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalPanenFairLabel">PanenFair — SwitchFest 2026</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> Ketua Tim, UI/UX Designer</p>
+                <p><strong>Tim:</strong> MARSIADAPARI</p>
+                <p><strong>Status:</strong> Masih dalam proses pengerjaan (kompetisi berlangsung)</p>
+                <p>Merancang proposal dan tampilan antarmuka PanenFair sebagai entri kompetisi UI/UX Design SwitchFest 2026.</p>
+              </div>
+              <div class="modal-footer">
+                <span class="text-muted small">Tautan Figma akan ditambahkan setelah tersedia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalBEC" tabindex="-1" aria-labelledby="modalBECLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalBECLabel">NEUROLEKSIA — Brawijaya Essay Competition 2026</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Peran:</strong> Ketua Tim, Penulis</p>
+                <p><strong>Hasil:</strong> Finalis</p>
+                <p>Esai berjudul "NEUROLEKSIA" mengusulkan program rehabilitasi literasi nasional berbasis neurofeedback. Naskah dikonsolidasikan dari 9 bab menjadi 6 bab dalam format .docx untuk pengumpulan resmi.</p>
+              </div>
+              <div class="modal-footer">
+                <span class="text-muted small">Dokumen esai tersedia atas permintaan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+<h3 class="subheading">Keahlian Utama</h3>
         <ul class="skills-list">
           <li>UI/UX Design (Figma)</li>
           <li>Flutter &amp; Mobile Development</li>
@@ -139,9 +401,7 @@
         </ul>
       </div>
     </section>
-
-    <!-- ===================== SECTION 3: FORMULIR LAYANAN ===================== -->
-    <section id="layanan" aria-labelledby="layanan-heading" class="section">
+<section id="layanan" aria-labelledby="layanan-heading" class="section">
       <div class="section-inner">
         <p class="eyebrow">Hubungi Saya</p>
         <h2 id="layanan-heading">Formulir Layanan</h2>
@@ -150,33 +410,40 @@
           analisis data? Isi formulir berikut.
         </p>
 
-        <form class="service-form" action="#" method="POST">
+        <form class="service-form" action="#" method="POST" novalidate>
 
           <fieldset class="form-fieldset">
             <legend>Data Diri</legend>
 
-            <div class="form-group">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama kamu" required>
               <label for="nama">Nama Lengkap <span class="req">*</span></label>
-              <input type="text" id="nama" name="nama" required placeholder="Nama kamu">
+              <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
+              <div class="valid-feedback">Terlihat bagus!</div>
             </div>
 
-            <div class="form-group">
-              <label for="email">Alamat Email <span class="req">*</span></label>
-              <input type="email" id="email" name="email" required placeholder="nama@email.com">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" name="email" placeholder="nama@email.com" required>
+              <label for="email"><i class="bi bi-envelope me-1"></i> Alamat Email <span class="req">*</span></label>
+              <div class="invalid-feedback">Alamat email yang valid wajib diisi.</div>
+              <div class="valid-feedback">Email valid!</div>
             </div>
 
-            <div class="form-group">
-              <label for="telepon">Nomor Telepon / WhatsApp</label>
-              <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx"
-                     pattern="[0-9]{10,15}" aria-describedby="telepon-help">
-              <small id="telepon-help" class="form-help">Opsional, format angka saja.</small>
+            <div class="input-group mb-1">
+              <span class="input-group-text"><i class="bi bi-whatsapp"></i></span>
+              <div class="form-floating">
+                <input type="tel" class="form-control" id="telepon" name="telepon"
+                       placeholder="08xxxxxxxxxx" pattern="[0-9]{10,15}" aria-describedby="telepon-help">
+                <label for="telepon">Nomor Telepon / WhatsApp</label>
+              </div>
             </div>
+            <small id="telepon-help" class="form-help d-block mb-3">Opsional, format angka saja.</small>
           </fieldset>
 
           <fieldset class="form-fieldset">
             <legend>Detail Permintaan Layanan</legend>
 
-            <div class="form-group">
+            <div class="form-group mb-3">
               <span class="group-label">Jenis Layanan yang Diminati <span class="req">*</span></span>
               <div class="radio-group">
                 <label class="radio-label">
@@ -191,28 +458,30 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="topik">Topik Konsultasi</label>
-              <select id="topik" name="topik">
+            <div class="form-floating mb-3">
+              <select class="form-select" id="topik" name="topik">
                 <option value="prototype">Pembuatan Prototipe</option>
                 <option value="riset">Riset Pengguna</option>
                 <option value="konsultasi-data">Konsultasi Analisis Data</option>
                 <option value="lainnya">Lainnya</option>
               </select>
+              <label for="topik">Topik Konsultasi</label>
             </div>
 
-            <div class="form-group">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="estimasi" name="estimasi" min="1" max="50" placeholder="Contoh: 5">
               <label for="estimasi">Estimasi Jumlah Halaman/Layar</label>
-              <input type="number" id="estimasi" name="estimasi" min="1" max="50" placeholder="Contoh: 5">
             </div>
 
-            <div class="form-group">
-              <label for="pesan">Deskripsi Kebutuhan <span class="req">*</span></label>
-              <textarea id="pesan" name="pesan" rows="4" required
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="pesan" name="pesan" style="height: 110px" required
                         placeholder="Ceritakan kebutuhan kamu di sini..."></textarea>
+              <label for="pesan">Deskripsi Kebutuhan <span class="req">*</span></label>
+              <div class="invalid-feedback">Deskripsi kebutuhan wajib diisi.</div>
+              <div class="valid-feedback">Deskripsi diterima.</div>
             </div>
 
-            <div class="form-group form-check">
+            <div class="form-group form-check mb-0">
               <label class="checkbox-label">
                 <input type="checkbox" id="setuju" name="setuju" required>
                 Saya setuju untuk dihubungi terkait permintaan ini <span class="req">*</span>
@@ -253,6 +522,22 @@
       </nav>
     </div>
   </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    (() => {
+      'use strict'
+      const forms = document.querySelectorAll('.service-form')
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
 
 </body>
 </html>
