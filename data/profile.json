@@ -1,0 +1,21 @@
+{
+  "name": "Theresia Oktaviani Samosir",
+  "nim": "12S24055",
+  "class": "13SI2",
+  "role": "UI/UX Design · Mobile Development · Data Analysis",
+  "eyebrow": "Sistem Informasi · Institut Teknologi Del",
+  "bio": "Mahasiswa S1 Sistem Informasi semester 5 di Institut Teknologi Del, aktif sebagai anggota MPH HIMSI. Tertarik merancang antarmuka yang jelas dan mudah dipakai, membangun aplikasi mobile dengan Flutter, serta membaca pola dari data untuk mengambil keputusan yang lebih baik.",
+  "photo": "theresia-profile.jpeg",
+  "journey": [
+    "Menempuh studi S1 Sistem Informasi di Institut Teknologi Del.",
+    "Bergabung sebagai anggota MPH HIMSI.",
+    "Mengikuti bootcamp Excel KarirNex - Pivot Table, VLOOKUP, SUMIFS, hingga Data Validation.",
+    "Memimpin tim MARSIADAPARI merancang PanenFair untuk kompetisi SwitchFest 2026."
+  ],
+  "facts": [
+    { "label": "Program Studi", "value": "S1 Sistem Informasi (Semester 5)" },
+    { "label": "Kampus", "value": "Institut Teknologi Del" },
+    { "label": "Organisasi", "value": "MPH HIMSI" },
+    { "label": "Fokus", "value": "UI/UX Design, Flutter, Data Analysis" }
+  ]
+}

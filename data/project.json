@@ -1,0 +1,148 @@
+[
+  {
+    "id": "feature-opt-bem",
+    "title": "Feature Optimization - BEM IT Del Website (SRS)",
+    "category": "Analisis Sistem",
+    "role": "Anggota Tim, Analisis Sistem",
+    "year": 2026,
+    "status": "Selesai",
+    "icon": "bi-file-earmark-text",
+    "image": null,
+    "summary": "Dokumen SyRS 60 halaman - Use Case, DFD, BPMN As-Is/To-Be.",
+    "description": "Menyusun dokumen SyRS sepanjang 60 halaman, mencakup Use Case Diagram, DFD, serta BPMN As-Is dan To-Be untuk optimasi fitur website BEM IT Del.",
+    "tags": ["SyRS", "Use Case", "DFD", "BPMN"],
+    "metrics": [
+      { "label": "Halaman dokumen", "value": "60" }
+    ],
+    "link": {
+      "label": "Lihat Dokumen",
+      "url": "https://drive.google.com/file/d/147bWBKGHXw5Qsel2Qm55l7Kprxl_e7JM/view?usp=sharing"
+    }
+  },
+  {
+    "id": "jexpress",
+    "title": "JExpress - Package Delivery Management System",
+    "category": "Backend",
+    "role": "Backend Developer (OOP)",
+    "year": 2026,
+    "status": "Selesai",
+    "icon": "bi-server",
+    "image": null,
+    "summary": "Aplikasi CLI Java + PostgreSQL, dibangun dengan pendekatan OOP.",
+    "description": "Sistem manajemen pengiriman paket berbasis CLI, dibangun dengan Java dan PostgreSQL menggunakan prinsip Object-Oriented Programming.",
+    "tags": ["Java", "PostgreSQL", "OOP", "CLI"],
+    "metrics": [
+      { "label": "Antarmuka", "value": "CLI" }
+    ],
+    "link": null
+  },
+  {
+    "id": "animation-catalog",
+    "title": "Animation Catalog App (Flutter)",
+    "category": "Mobile",
+    "role": "Mobile Developer",
+    "year": 2026,
+    "status": "Selesai",
+    "icon": "bi-phone",
+    "image": null,
+    "summary": "42 animasi, CRUD, integrasi REST API - selesai.",
+    "description": "Aplikasi katalog animasi berisi 42 koleksi animasi, dilengkapi fitur CRUD penuh dan integrasi REST API untuk pengambilan data dinamis.",
+    "tags": ["Flutter", "CRUD", "REST API"],
+    "metrics": [
+      { "label": "Koleksi animasi", "value": "42" }
+    ],
+    "link": {
+      "label": "Lihat di GitHub",
+      "url": "https://github.com/TheresiaOktavianiSamosir/animation_collection_iss24055.git"
+    }
+  },
+  {
+    "id": "travel-package",
+    "title": "Affordable Travel Package App Prototype",
+    "category": "UI/UX",
+    "role": "UI/UX Designer",
+    "year": 2025,
+    "status": "Selesai",
+    "icon": "bi-palette",
+    "image": null,
+    "summary": "Wireframe & prototipe interaktif (Figma) untuk aplikasi paket travel hemat.",
+    "description": "Merancang wireframe dan prototipe interaktif di Figma untuk aplikasi pemesanan paket travel dengan harga terjangkau.",
+    "tags": ["Figma", "Wireframe", "Prototype"],
+    "metrics": [
+      { "label": "Tools", "value": "Figma" }
+    ],
+    "link": null
+  },
+  {
+    "id": "immunization-monitoring",
+    "title": "Immunization Monitoring System Prototype",
+    "category": "UI/UX",
+    "role": "UI/UX Designer (Figma)",
+    "year": 2026,
+    "status": "Selesai",
+    "icon": "bi-clipboard2-pulse",
+    "image": null,
+    "summary": "Prototipe user-centered (Figma) untuk sistem pemantauan imunisasi.",
+    "description": "Merancang prototipe user-centered untuk sistem pemantauan imunisasi, berfokus pada kemudahan input dan pelacakan data oleh petugas kesehatan.",
+    "tags": ["Figma", "User-Centered Design", "Prototype"],
+    "metrics": [
+      { "label": "Tools", "value": "Figma" }
+    ],
+    "link": null
+  },
+  {
+    "id": "edutrack",
+    "title": "EduTrack - Simple LMS Platform",
+    "category": "Backend",
+    "role": "Backend Developer (Proyek Mandiri)",
+    "year": 2026,
+    "status": "Selesai",
+    "icon": "bi-server",
+    "image": null,
+    "summary": "Repository API untuk platform LMS sederhana, dikembangkan mandiri.",
+    "description": "Mengembangkan API untuk platform Learning Management System (LMS) sederhana sebagai proyek pengembangan diri mandiri.",
+    "tags": ["API", "LMS", "Backend"],
+    "metrics": [
+      { "label": "Jenis proyek", "value": "Mandiri" }
+    ],
+    "link": {
+      "label": "Lihat di GitHub",
+      "url": "https://github.com/TheresiaOktavianiSamosir/edutrack-api.git"
+    }
+  },
+  {
+    "id": "panenfair-switchfest",
+    "title": "PanenFair - SwitchFest 2026",
+    "category": "UI/UX",
+    "role": "Ketua Tim, UI/UX Designer",
+    "year": 2026,
+    "status": "Masih Berproses",
+    "icon": "bi-palette",
+    "image": null,
+    "summary": "Proposal & rancangan UI/UX untuk kompetisi UI/UX Design SwitchFest 2026, bersama tim MARSIADAPARI.",
+    "description": "Merancang proposal dan tampilan antarmuka PanenFair sebagai entri kompetisi UI/UX Design SwitchFest 2026 bersama tim MARSIADAPARI. Status: masih dalam proses pengerjaan (kompetisi berlangsung).",
+    "tags": ["UI/UX", "Figma", "Kompetisi"],
+    "metrics": [
+      { "label": "Tim", "value": "MARSIADAPARI" }
+    ],
+    "link": null
+  },
+  {
+    "id": "neuroleksia-bec",
+    "title": "NEUROLEKSIA - Brawijaya Essay Competition 2026",
+    "category": "Penulisan",
+    "role": "Ketua Tim, Penulis",
+    "year": 2026,
+    "status": "Finalis",
+    "icon": "bi-pencil-square",
+    "image": null,
+    "summary": "Esai program rehabilitasi literasi nasional berbasis neurofeedback, dari 9 bab menjadi 6 bab final.",
+    "description": "Esai berjudul NEUROLEKSIA mengusulkan program rehabilitasi literasi nasional berbasis neurofeedback. Naskah dikonsolidasikan dari 9 bab menjadi 6 bab dalam format .docx untuk pengumpulan resmi.",
+    "tags": ["Esai", "Neurofeedback", "Kompetisi"],
+    "metrics": [
+      { "label": "Bab final", "value": "6" },
+      { "label": "Hasil", "value": "Finalis" }
+    ],
+    "link": null
+  }
+]

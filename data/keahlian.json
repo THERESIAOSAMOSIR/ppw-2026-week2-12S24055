@@ -1,0 +1,9 @@
+[
+  { "id": "uiux", "name": "UI/UX Design (Figma)" },
+  { "id": "flutter", "name": "Flutter & Mobile Development" },
+  { "id": "java-oop", "name": "Java & Pemrograman Berorientasi Objek" },
+  { "id": "bpmn", "name": "Business Process Modeling (BPMN)" },
+  { "id": "data", "name": "Data & Database (Python, MySQL)" },
+  { "id": "html-css", "name": "HTML5 & CSS3" },
+  { "id": "git", "name": "Git & GitHub" }
+]
