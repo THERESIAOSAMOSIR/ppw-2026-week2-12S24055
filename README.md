@@ -1,6 +1,10 @@
-# PPW Portofolio Project - Theresia Oktaviani Samosir
+# Personal Portfolio & Service Portal (Week 3: Bootstrap 5)
 
-Website portofolio pribadi yang dirancang secara bersih, responsif, dan *accessible* menggunakan **HTML5 Semantic**, **CSS3 Modern**, dan **Bootstrap 5.3**. Proyek ini dibangun sebagai tugas mandiri mata kuliah **Pemrograman dan Pengujian Web (PPW)** Semester 5 tahun 2026 di Institut Teknologi Del.
+**Nama:** Theresia Oktaviani Samosir
+**NIM:** 12S24055
+**Kelas:** 13SI2
+**Mata Kuliah:** Pemrograman dan Pengujian Web (12S3101)
+**Program Studi:** S1 Sistem Informasi - Institut Teknologi Del
 
 🌐 **Live Demo:** https://theresiaosamosir.github.io/ppw-2026-week2-12S24055/
 
@@ -8,17 +12,19 @@ Website portofolio pribadi yang dirancang secara bersih, responsif, dan *accessi
 
 ## Deskripsi
 
-Halaman web portofolio profil profesional tunggal (*single page showcase*) yang menyajikan identitas akademik, rekapitulasi proyek, galeri keahlian, serta formulir konsultasi/kontak. Minggu 2 dibangun dengan HTML5 semantik dan CSS3 murni tanpa framework. Minggu 3 menambahkan Bootstrap 5.3 untuk layout, navbar, modal, dan formulir.
+Halaman web portofolio profil profesional tunggal (*single page showcase*) yang menyajikan identitas akademik, rekapitulasi proyek, keahlian, serta formulir layanan. Minggu 2 dibangun dengan HTML5 semantik dan CSS3 murni. Minggu 3 merefaktor proyek yang sama menggunakan **Bootstrap 5.3** dan **custom CSS overrides**.
 
-## Fitur Utama
+## Ringkasan Pembaruan (Week 3)
 
-- Struktur semantik HTML5 (`header`, `nav`, `main`, `section`, `aside`, `footer`)
-- Tabel data proyek semantik lengkap (`caption`, `thead`, `tbody`, `tfoot`, `scope`)
-- Formulir konsultasi accessible dengan `fieldset`, `legend`, `label`, dan validasi native
-- Palet warna 60-30-10, tipografi modern (Fraunces + Inter), border-radius, box-shadow
-- Layout responsif berbasis CSS Grid, Flexbox, dan Bootstrap 5.3
+- Integrasi Bootstrap 5.3.3 (CSS dan JS bundle via CDN) dan Bootstrap Icons
+- Responsive navbar sticky dengan tombol hamburger (collapse) di layar ponsel
+- Hero section dengan tombol call-to-action
+- Grid portofolio responsif (`row-cols-1 row-cols-md-2 row-cols-lg-3`) berisi kartu proyek
+- Modal dialog Bootstrap untuk detail setiap proyek
+- Formulir layanan baru: floating labels, input group berikon, select, checkbox, dan validasi visual (`valid-feedback` / `invalid-feedback`)
+- Custom CSS (`style.css`) dimuat setelah Bootstrap untuk tema dan mikro-interaksi
 
-## 📸 Screenshot Tampilan
+## Sebelum vs Sesudah Integrasi Framework
 
 ### Hero / Tentang Saya
 | Sebelum (Week 2) | Sesudah (Week 3) |
@@ -35,7 +41,7 @@ Halaman web portofolio profil profesional tunggal (*single page showcase*) yang 
 |---|---|
 | ![before](assets/before-form.png) | ![after](assets/after-form.png) |
 
-### Ringkasan Perubahan
+### Tabel Komparasi
 | Aspek | Sebelum | Sesudah |
 |---|---|---|
 | Layout Portofolio | Carousel horizontal manual | Grid Bootstrap 5 (row-cols) |
@@ -44,14 +50,21 @@ Halaman web portofolio profil profesional tunggal (*single page showcase*) yang 
 | Formulir | Input dasar | Floating Labels + validasi visual |
 | CSS Framework | CSS murni | Bootstrap 5.3 + custom overrides |
 
-## Struktur Berkas
+## Struktur Direktori
 
 ```
-├── index.html             # Halaman utama portofolio
-├── style.css              # Seluruh styling
-├── theresia-profile.jpeg  # Foto profil
-├── assets/                # Screenshot sebelum dan sesudah
-└── README.md              # Dokumentasi ini
+ppw-2026-week2-12S24055/
+├── index.html              # Halaman utama (HTML5 Semantic + Bootstrap 5.3)
+├── style.css               # Custom CSS dan override Bootstrap
+├── theresia-profile.jpeg   # Foto profil
+├── README.md               # Dokumentasi proyek
+└── assets/                 # Screenshot perbandingan Week 2 dan Week 3
+    ├── before-hero.png
+    ├── after-hero.png
+    ├── before-portofolio.png
+    ├── after-portofolio.png
+    ├── before-form.png
+    └── after-form.png
 ```
 
 ## Cara Menjalankan Secara Lokal
@@ -59,8 +72,3 @@ Halaman web portofolio profil profesional tunggal (*single page showcase*) yang 
 1. Clone repositori ini
 2. Buka folder di VS Code
 3. Klik kanan `index.html` lalu pilih **Open with Live Server**
-
-## Dibuat oleh
-
-Theresia Oktaviani Samosir - 12S24055
-S1 Sistem Informasi, Institut Teknologi Del
