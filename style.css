@@ -352,6 +352,10 @@ h2 { font-size: clamp(24px, 3.5vw, 30px); margin-bottom: 10px; }
   padding-bottom: 12px;
 }
 
+.form-fieldset:focus-within legend {
+  color: var(--color-accent);
+}
+
 .req { color: var(--color-danger); }
 
 .group-label {
