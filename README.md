@@ -2,10 +2,10 @@
 
 **Mata Kuliah:** Pemrograman dan Pengujian Web (12S3101) - Institut Teknologi Del
 **Nama:** Theresia Oktaviani Samosir | **NIM:** 12S24055 | **Kelas:** 13SI2
-**Live Demo (GitHub Pages):** `https://<username>.github.io/<nama-repositori>/` <!-- TODO: ganti setelah deploy -->
-**Branch:** `week4-architecture`
+**Live Demo (GitHub Pages):** https://theresiaosamosir.github.io/ppw-2026-week2-12S24055/
+**Branch:** `PPW-2026-Week4_12S24055`
 
-Proyek ini melanjutkan portofolio Minggu 3 (Bootstrap 5.3). Seluruh konten yang semula ditulis langsung di `index.html` dipindahkan ke penyedia data JSON terpisah dan dirender secara dinamis di browser (Client-Side Rendering).
+Proyek ini adalah lanjutan dari portofolio Minggu 3 yang memakai Bootstrap 5.3. Pada Minggu 3, semua isi kartu, modal, dan daftar layanan ditulis langsung di `index.html`. Di Minggu 4 ini, semua isi tersebut dipindahkan ke file JSON terpisah, lalu ditampilkan oleh JavaScript saat halaman dibuka (Client-Side Rendering). Dengan begitu, `index.html` hanya berisi kerangka halaman.
 
 ---
 
@@ -13,15 +13,16 @@ Proyek ini melanjutkan portofolio Minggu 3 (Bootstrap 5.3). Seluruh konten yang 
 
 ```
 Praktikum Week 4/
-├── index.html            # Shell HTML5 + Bootstrap 5, tanpa kartu hardcoded
-├── style.css             # Custom styles, tema, dan CSS variables
+├── index.html            # Kerangka HTML5 + Bootstrap 5, tanpa kartu hardcoded
+├── style.css             # Gaya kustom, tema, dan CSS variables
 ├── theresia-profile.jpeg # Foto profil
+├── images/               # Gambar dan screenshot proyek
 ├── js/
-│   ├── api-service.js    # Data Access Layer: fetch, error handling, mock POST
+│   ├── api-service.js    # Data Access Layer: fetch, penanganan error, POST tiruan
 │   └── app.js            # Presentation Layer: DOM, rendering, event, modal, form
 └── data/
     ├── profile.json      # Biodata dan info cepat
-    ├── project.json      # 8 proyek (kategori, tags, metrics, link)
+    ├── project.json      # 8 proyek (kategori, tags, metrics, link, galeri)
     ├── services.json     # 3 paket layanan (fitur dan tarif)
     └── keahlian.json     # 7 keahlian utama
 ```
@@ -57,51 +58,57 @@ flowchart LR
     spa -->|"simpan dan baca pesanan"| ls
 ```
 
-**Keterangan lapisan (Multi-Tier):**
+**Pembagian lapisan (Multi-Tier):**
 
-| Tier | Komponen | Tanggung jawab |
+| Tier | Komponen | Tugasnya |
 |---|---|---|
-| Presentation Tier | `index.html`, `style.css`, `app.js` | Antarmuka, rendering DOM, interaksi, UI states, Toast |
-| Application / API Logic Tier | `api-service.js`, Mock REST API | Kontrak pengambilan dan pengiriman data, penanganan error HTTP |
-| Data Storage Tier | `/data/*.json`, `localStorage` | Penyimpanan data statis (JSON) dan persistensi sisi klien |
+| Presentation Tier | `index.html`, `style.css`, `app.js` | Menampilkan antarmuka, merakit DOM, mengatur interaksi, UI states, dan Toast |
+| Application / API Logic Tier | `api-service.js`, Mock REST API | Mengatur cara mengambil dan mengirim data, serta menangani error HTTP |
+| Data Storage Tier | `/data/*.json`, `localStorage` | Menyimpan data statis (JSON) dan riwayat pesanan di sisi klien |
 
 ---
 
 ## 3. Separation of Concerns (SoC)
 
-Pada Minggu 3, struktur halaman, isi data, dan tampilan bercampur dalam satu berkas `index.html`. Setiap perubahan konten (misalnya menambah proyek) menuntut penyuntingan markup HTML. Pada Minggu 4 tanggung jawab dipisahkan menjadi empat lapisan yang masing-masing hanya memiliki satu alasan untuk berubah:
+Di Minggu 3, struktur halaman, isi data, dan tampilan bercampur dalam satu file `index.html`. Akibatnya, setiap kali ingin menambah proyek, saya harus mengedit kode HTML secara langsung. Cara ini kurang praktis dan mudah menimbulkan kesalahan.
 
-1. **Struktur (HTML):** `index.html` hanya berisi kerangka dan penampung kosong (`#projectGrid`, `#servicesCatalog`, `#skillsList`). Tidak ada konten data di dalamnya.
-2. **Data (JSON):** isi portofolio berada di `/data`. Menambah proyek cukup menambah satu objek JSON tanpa menyentuh HTML atau JavaScript.
-3. **Akses data (`api-service.js`):** satu-satunya berkas yang memanggil `fetch`. Berkas ini tidak menyentuh DOM, sehingga sumber data dapat diganti (misalnya dari file JSON ke REST API sungguhan) tanpa mengubah logika tampilan.
-4. **Presentasi (`app.js`):** menerima data dari `ApiService` lalu merakit DOM, mengelola filter, modal, form, dan state tampilan.
+Di Minggu 4, tanggung jawab dipisah menjadi empat bagian. Setiap bagian hanya mengurus satu hal:
 
-Pemisahan ini menyerupai pola Jamstack: aset statis disajikan dari CDN, sedangkan data dimuat secara asinkron lewat API pada saat halaman berjalan. Hasilnya, pemeliharaan lebih mudah, setiap lapisan dapat diuji sendiri, dan TTFB halaman tetap rendah karena server hanya mengirim HTML shell kecil.
+1. **Struktur (HTML):** `index.html` hanya berisi kerangka dan wadah kosong seperti `#projectGrid`, `#servicesCatalog`, dan `#skillsList`. Tidak ada data yang ditulis di sini.
+2. **Data (JSON):** isi portofolio disimpan di folder `/data`. Untuk menambah proyek, saya cukup menambah satu objek di `project.json` tanpa menyentuh HTML maupun JavaScript.
+3. **Akses data (`api-service.js`):** hanya file ini yang memanggil `fetch`. File ini tidak menyentuh DOM, sehingga sumber data bisa diganti (misalnya ke REST API sungguhan) tanpa mengubah kode tampilan.
+4. **Tampilan (`app.js`):** menerima data dari `ApiService`, lalu membuat kartu, filter, modal, form, dan notifikasi.
+
+Pola ini mirip dengan Jamstack: file statis disajikan dari CDN, sedangkan datanya diambil lewat API saat halaman berjalan. Keuntungannya, proyek lebih mudah dirawat, setiap bagian bisa diuji sendiri, dan halaman tetap cepat dimuat karena server hanya mengirim kerangka HTML yang kecil.
 
 ### Perbandingan paradigma rendering
 
 | Parameter | SSR | CSR (proyek ini) | Jamstack |
 |---|---|---|---|
-| Perakitan DOM | Di server per request | Di browser via JavaScript | Build-time dan hydrate via API |
-| Beban server | Tinggi | Sangat rendah | Minimal (CDN) |
-| TTFB | Menengah-lambat | Cepat (HTML shell kecil) | Sangat cepat (cache CDN) |
-| Hosting | Server aktif 24/7 | Static CDN (GitHub Pages) | Static CDN + serverless |
+| Perakitan DOM | Di server setiap request | Di browser lewat JavaScript | Saat build, lalu dilengkapi lewat API |
+| Beban server | Tinggi | Sangat rendah | Minimal (dilayani CDN) |
+| TTFB | Menengah sampai lambat | Cepat (HTML kecil) | Sangat cepat (cache CDN) |
+| Hosting | Server harus aktif terus | CDN statis (GitHub Pages) | CDN statis + serverless |
 
 ---
 
 ## 4. Fitur yang Diimplementasikan
 
-- **Dynamic CSR dan 4 UI States:** loading (skeleton), success (kartu), empty (hasil filter kosong), dan error (alert dengan tombol "Coba Lagi").
-- **Filter kategori dan pencarian instan** pada portofolio, dengan penomoran proyek yang tetap.
-- **Universal Dynamic Modal:** satu elemen modal untuk semua proyek, isinya diinjeksi berdasarkan ID proyek.
-- **Katalog layanan dinamis** dari `services.json`; tombol "Pilih Layanan Ini" mencentang jenis layanan pada form.
-- **Form asinkron:** `fetch` POST dengan payload JSON, tanpa reload, tombol berubah menjadi "Mengirim...", umpan balik Bootstrap Toast.
-- **State lokal:** pesanan disimpan di `localStorage` dan jumlahnya tampil pada badge "Pesanan" di navbar secara reaktif.
-- **Keamanan sisi klien:** `escapeHTML()` untuk semua nilai dinamis, `safeUrl()` yang hanya mengizinkan `http`/`https`/relatif, `safeIcon()` yang hanya mengizinkan kelas `bi-*`, serta `textContent` untuk Toast dan elemen profil.
+- **Dynamic CSR dan 4 UI States:** loading (skeleton), success (kartu tampil), empty (hasil filter kosong), dan error (pesan peringatan dengan tombol "Coba Lagi").
+- **Filter kategori dan pencarian** pada portofolio. Hasilnya langsung berubah tanpa memuat ulang halaman, dan nomor proyek tetap sama walaupun difilter.
+- **Universal Dynamic Modal:** hanya ada satu modal untuk semua proyek. Isinya diganti sesuai ID proyek yang diklik, dan proyek yang punya beberapa gambar menampilkannya dalam galeri geser.
+- **Katalog layanan dinamis** dari `services.json`. Tombol "Pilih Layanan Ini" otomatis memilih jenis layanan yang sesuai di formulir.
+- **Form asinkron:** data dikirim memakai `fetch` POST dalam format JSON tanpa reload halaman. Tombol berubah menjadi "Mengirim..." saat proses berjalan, lalu muncul Toast Bootstrap sebagai notifikasi.
+- **State lokal:** pesanan disimpan di `localStorage`, dan jumlahnya ditampilkan pada badge "Pesanan" di navbar yang langsung ter-update.
+- **Keamanan sisi klien:**
+  - `escapeHTML()` dipakai untuk semua nilai dinamis agar tidak dibaca sebagai kode HTML.
+  - `safeUrl()` hanya mengizinkan URL `http`, `https`, atau relatif.
+  - `safeIcon()` hanya mengizinkan nama kelas `bi-*`.
+  - `textContent` dipakai untuk Toast dan data profil.
 
 ### Rancangan Content Security Policy (CSP)
 
-Direktif yang direkomendasikan untuk situs ini (dapat dipasang lewat meta tag atau header server):
+Berikut direktif CSP yang saya rancang untuk situs ini. Direktif ini bisa dipasang lewat meta tag atau header server.
 
 ```
 default-src 'self';
@@ -114,7 +121,7 @@ object-src  'none';
 base-uri    'self';
 ```
 
-Skrip inline telah dihapus dari `index.html` sehingga `script-src` tidak memerlukan `'unsafe-inline'`.
+Skrip inline sudah dihapus dari `index.html`, jadi `script-src` tidak membutuhkan `'unsafe-inline'`.
 
 ---
 
@@ -125,20 +132,20 @@ Skrip inline telah dihapus dari `index.html` sehingga `script-src` tidak memerlu
 | Sumber konten | Ditulis langsung di `index.html` | Dimuat dari `/data/*.json` |
 | Arsitektur | Monolitik statis | Decoupled multi-tier |
 | Rendering | Statis di HTML | Dynamic CSR (fetch + async/await) |
-| Menambah proyek | Edit HTML | Tambah objek di `project.json` |
-| Detail proyek | Modal terpisah per proyek | 1 Universal Dynamic Modal |
-| Status antarmuka | Tidak ada | Loading, success, empty, error |
+| Menambah proyek | Mengedit HTML | Menambah objek di `project.json` |
+| Detail proyek | Modal terpisah untuk tiap proyek | 1 Universal Dynamic Modal |
+| Status tampilan | Tidak ada | Loading, success, empty, error |
 | Filter portofolio | Tidak ada | Filter kategori dan pencarian instan |
-| Form layanan | Submit standar (reload halaman) | Fetch POST asinkron + Toast |
-| Penyimpanan | Tidak ada | `localStorage` + badge reaktif |
-| Keamanan | - | Sanitasi `escapeHTML`, validasi URL, rancangan CSP |
+| Form layanan | Submit biasa (halaman dimuat ulang) | Fetch POST asinkron + Toast |
+| Penyimpanan | Tidak ada | `localStorage` + badge yang ter-update |
+| Keamanan | Belum ada penanganan khusus | `escapeHTML`, validasi URL, rancangan CSP |
 
 ---
 
 ## 6. Hasil Profiling Jaringan (Chrome DevTools)
 
-**Kondisi pengujian:** Chrome versi `___`, tab Network, tanpa throttling, pada URL GitHub Pages. <!-- TODO -->
-Cold Load = *Disable cache* dicentang + hard reload. Warm Load = muat ulang biasa setelah cold load.
+**Kondisi pengujian:** Chrome versi `___`, tab Network, tanpa throttling, diuji pada URL GitHub Pages. <!-- TODO: isi versi Chrome -->
+Cold Load: centang *Disable cache*, lalu hard reload (Ctrl+Shift+R). Warm Load: reload biasa (F5) setelah cold load.
 
 ### 6.1 Cold Load vs Warm Load
 
@@ -149,7 +156,7 @@ Cold Load = *Disable cache* dicentang + hard reload. Warm Load = muat ulang bias
 | DOMContentLoaded | ___ ms | ___ ms |
 | Load | ___ ms | ___ ms |
 | Jumlah request | ___ | ___ |
-| Data ditransfer | ___ KB | ___ KB |
+| Data yang ditransfer | ___ KB | ___ KB |
 
 ### 6.2 Analisis Caching (per berkas)
 
@@ -170,26 +177,26 @@ Cold Load = *Disable cache* dicentang + hard reload. Warm Load = muat ulang bias
 
 ### 6.4 Analisis
 
-<!-- TODO: isi 3-5 kalimat berdasarkan hasil ukur. Contoh poin yang dibahas:
-- Mengapa warm load lebih cepat (cache browser / 304 Not Modified, body kosong, hemat bandwidth)
-- Urutan request pada waterfall: HTML -> CSS/JS -> JSON (JSON baru diminta setelah app.js berjalan)
-- Dampak CSR terhadap FCP: HTML shell kecil sehingga TTFB rendah, tetapi konten kartu baru muncul setelah JSON dimuat
+<!-- TODO: tulis 3-5 kalimat berdasarkan hasil pengukuran. Poin yang bisa dibahas:
+- Kenapa warm load lebih cepat (cache browser atau status 304 Not Modified yang body-nya kosong sehingga hemat bandwidth)
+- Urutan request di waterfall: HTML, lalu CSS/JS, baru setelah itu file JSON (karena JSON baru diminta setelah app.js berjalan)
+- Pengaruh CSR terhadap FCP: HTML kecil sehingga TTFB rendah, tetapi isi kartu baru muncul setelah JSON selesai dimuat
 -->
 
 ---
 
 ## 7. Cara Menjalankan
 
-1. Buka folder proyek di VS Code, jalankan **Live Server** (fetch JSON tidak berjalan jika berkas dibuka langsung lewat `file://`).
-2. Buka `http://127.0.0.1:5500/index.html`.
+1. Buka folder proyek di VS Code, lalu jalankan **Live Server**. Proyek ini tidak bisa dibuka langsung lewat `file://` karena `fetch` untuk membaca JSON membutuhkan server.
+2. Buka `http://127.0.0.1:5500/index.html` di browser.
 
 ## 8. Git dan Deployment
 
 ```bash
-git checkout -b week4-architecture
+git checkout PPW-2026-Week4_12S24055
 git add .
 git commit -m "feat(week4): decouple architecture to json data providers and async CSR"
-git push -u origin week4-architecture
+git push origin PPW-2026-Week4_12S24055
 ```
 
-Aktifkan GitHub Pages: **Settings > Pages > Source: Branch `week4-architecture` > Save**.
+Aktifkan GitHub Pages: **Settings > Pages > Source: Deploy from a branch > Branch `PPW-2026-Week4_12S24055` > / (root) > Save**.
