@@ -1,142 +1,38 @@
 [
   {
-    "id": "healing-trip-toba",
-    "name": "Healing Trip Toba",
-    "type": "Open Trip",
-    "destination": "Danau Toba, Parapat",
-    "duration": "3 Hari 2 Malam",
-    "schedule": "Sabtu-Senin, 2x per bulan",
-    "quota": 10,
-    "icon": "bi-water",
-    "image": null,
-    "description": "Paket healing dengan aktivitas santai di Danau Toba, Parapat.",
+    "id": "uiux",
+    "name": "UI/UX Design",
+    "icon": "bi-palette",
+    "description": "Perancangan antarmuka yang jelas dan mudah dipakai, dari wireframe sampai prototipe interaktif di Figma.",
     "features": [
-      "Destinasi Danau Toba, Parapat",
-      "3 Hari 2 Malam",
-      "Jadwal Sabtu-Senin, 2x per bulan",
-      "Kuota 10 peserta"
+      "Wireframe & user flow",
+      "Prototipe interaktif Figma",
+      "Revisi desain 2x"
     ],
-    "pricing": { "mahasiswa": 350000, "anak": 325000, "dewasa": 400000 },
-    "studentDiscount": 25000
+    "rate": "Sesuai kesepakatan"
   },
   {
-    "id": "tapanuli-utara-cultural-nature",
-    "name": "Tapanuli Utara Cultural & Nature Trip",
-    "type": "Open Trip",
-    "destination": "Tarutung",
-    "duration": "3 Hari 2 Malam",
-    "schedule": "Setiap weekend",
-    "quota": 10,
-    "icon": "bi-tree",
-    "image": null,
-    "description": "Menjelajahi alam dan budaya Tapanuli Utara, termasuk kawasan pegunungan yang sejuk.",
+    "id": "mobile",
+    "name": "Mobile Development",
+    "icon": "bi-phone",
+    "description": "Pengembangan aplikasi mobile dengan Flutter, termasuk CRUD dan integrasi REST API.",
     "features": [
-      "Destinasi Tarutung, Tapanuli Utara",
-      "3 Hari 2 Malam",
-      "Jadwal setiap weekend",
-      "Kuota 10 peserta"
+      "Aplikasi Flutter",
+      "CRUD & integrasi REST API",
+      "Source code via GitHub"
     ],
-    "pricing": { "mahasiswa": 350000, "anak": 325000, "dewasa": 400000 },
-    "studentDiscount": 25000
+    "rate": "Sesuai kesepakatan"
   },
   {
-    "id": "samosir-island-explorer",
-    "name": "Samosir Island Explorer",
-    "type": "Open Trip",
-    "destination": "Pulau Samosir, Tomok",
-    "duration": "3 Hari 2 Malam",
-    "schedule": "Setiap weekend",
-    "quota": 10,
-    "icon": "bi-geo-alt",
-    "image": null,
-    "description": "Eksplorasi Pulau Samosir dengan budaya Batak yang kaya, termasuk desa tradisional dan museum.",
+    "id": "data",
+    "name": "Analisis Data",
+    "icon": "bi-bar-chart",
+    "description": "Pembersihan, analisis, dan penyajian data (Excel, Python, MySQL) untuk membantu pengambilan keputusan.",
     "features": [
-      "Destinasi Pulau Samosir, Tomok",
-      "3 Hari 2 Malam",
-      "Jadwal setiap weekend",
-      "Kuota 10 peserta"
+      "Pembersihan & validasi data",
+      "Pivot / query analisis",
+      "Ringkasan temuan"
     ],
-    "pricing": { "mahasiswa": 350000, "anak": 325000, "dewasa": 400000 },
-    "studentDiscount": 25000
-  },
-  {
-    "id": "coastal-escape-tapanuli-tengah",
-    "name": "Coastal Escape Tapanuli Tengah",
-    "type": "Open Trip",
-    "destination": "Tapanuli Tengah, Sibolga",
-    "duration": "3 Hari 2 Malam",
-    "schedule": "Senin-Rabu, 2x per bulan",
-    "quota": 10,
-    "icon": "bi-umbrella",
-    "image": null,
-    "description": "Menjelajahi pesona pantai barat Sumatera: pasir, laut biru, dan kuliner laut segar.",
-    "features": [
-      "Destinasi Tapanuli Tengah, Sibolga",
-      "3 Hari 2 Malam",
-      "Jadwal Senin-Rabu, 2x per bulan",
-      "Kuota 10 peserta"
-    ],
-    "pricing": { "mahasiswa": 350000, "anak": 325000, "dewasa": 400000 },
-    "studentDiscount": 25000
-  },
-  {
-    "id": "heritage-tapanuli-selatan",
-    "name": "Heritage Tapanuli Selatan Journey",
-    "type": "Open Trip",
-    "destination": "Tapanuli Selatan",
-    "duration": "3 Hari 2 Malam",
-    "schedule": "Tanggal 10-12 setiap bulan",
-    "quota": 10,
-    "icon": "bi-bank",
-    "image": null,
-    "description": "Mengunjungi situs sejarah, menikmati panorama pegunungan, dan mencicipi cita rasa lokal yang khas.",
-    "features": [
-      "Destinasi Tapanuli Selatan",
-      "3 Hari 2 Malam",
-      "Jadwal tanggal 10-12 setiap bulan",
-      "Kuota 10 peserta"
-    ],
-    "pricing": { "mahasiswa": 350000, "anak": 325000, "dewasa": 400000 },
-    "studentDiscount": 25000
-  },
-  {
-    "id": "karo-highland-getaway",
-    "name": "Karo Highland Getaway",
-    "type": "Open Trip",
-    "destination": "Karo, Berastagi",
-    "duration": "3 Hari 2 Malam",
-    "schedule": "Setiap weekend",
-    "quota": 10,
-    "icon": "bi-flower1",
-    "image": null,
-    "description": "Menikmati keindahan gunung, kebun buah, dan pengalaman budaya yang otentik di dataran tinggi Karo.",
-    "features": [
-      "Destinasi Karo, Berastagi",
-      "3 Hari 2 Malam",
-      "Jadwal setiap weekend",
-      "Kuota 10 peserta"
-    ],
-    "pricing": { "mahasiswa": 350000, "anak": 325000, "dewasa": 400000 },
-    "studentDiscount": 25000
-  },
-  {
-    "id": "custom-private-trip",
-    "name": "Custom Private Trip",
-    "type": "Custom Trip",
-    "destination": "Destinasi pilihan sendiri",
-    "duration": "Fleksibel (min. 2D1N)",
-    "schedule": "By request",
-    "quota": 20,
-    "icon": "bi-compass",
-    "image": null,
-    "description": "Perjalanan yang dirancang sendiri: tentukan destinasi, durasi, dan aktivitas sesuai keinginan kelompok.",
-    "features": [
-      "Destinasi pilihan sendiri",
-      "Durasi fleksibel, minimal 2D1N",
-      "Jadwal by request",
-      "Kuota hingga 20 peserta"
-    ],
-    "pricing": { "mahasiswa": 350000, "anak": 325000, "dewasa": 400000 },
-    "studentDiscount": 25000
+    "rate": "Sesuai kesepakatan"
   }
 ]

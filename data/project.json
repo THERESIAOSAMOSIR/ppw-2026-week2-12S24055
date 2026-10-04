@@ -7,12 +7,20 @@
     "year": 2026,
     "status": "Selesai",
     "icon": "bi-file-earmark-text",
-    "image": null,
+    "image": "images/feature-opt-bem.png",
     "summary": "Dokumen SyRS 60 halaman - Use Case, DFD, BPMN As-Is/To-Be.",
     "description": "Menyusun dokumen SyRS sepanjang 60 halaman, mencakup Use Case Diagram, DFD, serta BPMN As-Is dan To-Be untuk optimasi fitur website BEM IT Del.",
-    "tags": ["SyRS", "Use Case", "DFD", "BPMN"],
+    "tags": [
+      "SyRS",
+      "Use Case",
+      "DFD",
+      "BPMN"
+    ],
     "metrics": [
-      { "label": "Halaman dokumen", "value": "60" }
+      {
+        "label": "Halaman dokumen",
+        "value": "60"
+      }
     ],
     "link": {
       "label": "Lihat Dokumen",
@@ -27,12 +35,20 @@
     "year": 2026,
     "status": "Selesai",
     "icon": "bi-server",
-    "image": null,
+    "image": "images/jexpress.png",
     "summary": "Aplikasi CLI Java + PostgreSQL, dibangun dengan pendekatan OOP.",
     "description": "Sistem manajemen pengiriman paket berbasis CLI, dibangun dengan Java dan PostgreSQL menggunakan prinsip Object-Oriented Programming.",
-    "tags": ["Java", "PostgreSQL", "OOP", "CLI"],
+    "tags": [
+      "Java",
+      "PostgreSQL",
+      "OOP",
+      "CLI"
+    ],
     "metrics": [
-      { "label": "Antarmuka", "value": "CLI" }
+      {
+        "label": "Antarmuka",
+        "value": "CLI"
+      }
     ],
     "link": null
   },
@@ -44,12 +60,19 @@
     "year": 2026,
     "status": "Selesai",
     "icon": "bi-phone",
-    "image": null,
+    "image": "images/animation-catalog.jpg",
     "summary": "42 animasi, CRUD, integrasi REST API - selesai.",
     "description": "Aplikasi katalog animasi berisi 42 koleksi animasi, dilengkapi fitur CRUD penuh dan integrasi REST API untuk pengambilan data dinamis.",
-    "tags": ["Flutter", "CRUD", "REST API"],
+    "tags": [
+      "Flutter",
+      "CRUD",
+      "REST API"
+    ],
     "metrics": [
-      { "label": "Koleksi animasi", "value": "42" }
+      {
+        "label": "Koleksi animasi",
+        "value": "42"
+      }
     ],
     "link": {
       "label": "Lihat di GitHub",
@@ -64,14 +87,39 @@
     "year": 2025,
     "status": "Selesai",
     "icon": "bi-palette",
-    "image": null,
+    "image": "images/travel-1-daftar-trip.jpg",
     "summary": "Wireframe & prototipe interaktif (Figma) untuk aplikasi paket travel hemat.",
     "description": "Merancang wireframe dan prototipe interaktif di Figma untuk aplikasi pemesanan paket travel dengan harga terjangkau.",
-    "tags": ["Figma", "Wireframe", "Prototype"],
-    "metrics": [
-      { "label": "Tools", "value": "Figma" }
+    "tags": [
+      "Figma",
+      "Wireframe",
+      "Prototype"
     ],
-    "link": null
+    "metrics": [
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "link": null,
+    "gallery": [
+      {
+        "src": "images/travel-1-daftar-trip.jpg",
+        "caption": "Daftar paket trip"
+      },
+      {
+        "src": "images/travel-2-detail-trip.jpg",
+        "caption": "Detail paket trip"
+      },
+      {
+        "src": "images/travel-3-form-pendaftaran.jpg",
+        "caption": "Form pendaftaran peserta"
+      },
+      {
+        "src": "images/travel-4-admin-kelola-trip.jpg",
+        "caption": "Dashboard admin: kelola trip"
+      }
+    ]
   },
   {
     "id": "immunization-monitoring",
@@ -81,14 +129,31 @@
     "year": 2026,
     "status": "Selesai",
     "icon": "bi-clipboard2-pulse",
-    "image": null,
+    "image": "images/immunization-1-splash-login.png",
     "summary": "Prototipe user-centered (Figma) untuk sistem pemantauan imunisasi.",
     "description": "Merancang prototipe user-centered untuk sistem pemantauan imunisasi, berfokus pada kemudahan input dan pelacakan data oleh petugas kesehatan.",
-    "tags": ["Figma", "User-Centered Design", "Prototype"],
-    "metrics": [
-      { "label": "Tools", "value": "Figma" }
+    "tags": [
+      "Figma",
+      "User-Centered Design",
+      "Prototype"
     ],
-    "link": null
+    "metrics": [
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "link": null,
+    "gallery": [
+      {
+        "src": "images/immunization-1-splash-login.png",
+        "caption": "Splash screen dan login nomor telepon"
+      },
+      {
+        "src": "images/immunization-2-pemantauan.jpg",
+        "caption": "Pemantauan pasca imunisasi, panduan, dan pengingat"
+      }
+    ]
   },
   {
     "id": "edutrack",
@@ -98,12 +163,19 @@
     "year": 2026,
     "status": "Selesai",
     "icon": "bi-server",
-    "image": null,
+    "image": "images/edutrack.png",
     "summary": "Repository API untuk platform LMS sederhana, dikembangkan mandiri.",
     "description": "Mengembangkan API untuk platform Learning Management System (LMS) sederhana sebagai proyek pengembangan diri mandiri.",
-    "tags": ["API", "LMS", "Backend"],
+    "tags": [
+      "API",
+      "LMS",
+      "Backend"
+    ],
     "metrics": [
-      { "label": "Jenis proyek", "value": "Mandiri" }
+      {
+        "label": "Jenis proyek",
+        "value": "Mandiri"
+      }
     ],
     "link": {
       "label": "Lihat di GitHub",
@@ -118,14 +190,31 @@
     "year": 2026,
     "status": "Masih Berproses",
     "icon": "bi-palette",
-    "image": null,
+    "image": "images/panenfair-1-beranda.png",
     "summary": "Proposal & rancangan UI/UX untuk kompetisi UI/UX Design SwitchFest 2026, bersama tim MARSIADAPARI.",
     "description": "Merancang proposal dan tampilan antarmuka PanenFair sebagai entri kompetisi UI/UX Design SwitchFest 2026 bersama tim MARSIADAPARI. Status: masih dalam proses pengerjaan (kompetisi berlangsung).",
-    "tags": ["UI/UX", "Figma", "Kompetisi"],
-    "metrics": [
-      { "label": "Tim", "value": "MARSIADAPARI" }
+    "tags": [
+      "UI/UX",
+      "Figma",
+      "Kompetisi"
     ],
-    "link": null
+    "metrics": [
+      {
+        "label": "Tim",
+        "value": "MARSIADAPARI"
+      }
+    ],
+    "link": null,
+    "gallery": [
+      {
+        "src": "images/panenfair-1-beranda.png",
+        "caption": "Beranda: peringatan harga dan catat hasil panen"
+      },
+      {
+        "src": "images/panenfair-2-pasar.png",
+        "caption": "Pasar: papan kebutuhan komoditas"
+      }
+    ]
   },
   {
     "id": "neuroleksia-bec",
@@ -135,13 +224,23 @@
     "year": 2026,
     "status": "Finalis",
     "icon": "bi-pencil-square",
-    "image": null,
+    "image": "images/neuroleksia-bec.png",
     "summary": "Esai program rehabilitasi literasi nasional berbasis neurofeedback, dari 9 bab menjadi 6 bab final.",
     "description": "Esai berjudul NEUROLEKSIA mengusulkan program rehabilitasi literasi nasional berbasis neurofeedback. Naskah dikonsolidasikan dari 9 bab menjadi 6 bab dalam format .docx untuk pengumpulan resmi.",
-    "tags": ["Esai", "Neurofeedback", "Kompetisi"],
+    "tags": [
+      "Esai",
+      "Neurofeedback",
+      "Kompetisi"
+    ],
     "metrics": [
-      { "label": "Bab final", "value": "6" },
-      { "label": "Hasil", "value": "Finalis" }
+      {
+        "label": "Bab final",
+        "value": "6"
+      },
+      {
+        "label": "Hasil",
+        "value": "Finalis"
+      }
     ],
     "link": null
   }

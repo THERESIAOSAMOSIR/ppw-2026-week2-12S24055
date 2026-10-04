@@ -10,11 +10,15 @@ const App = {
 
   state: {
     projects: [],
+    services: [],
     category: 'Semua',
     query: ''
   },
 
   el: {},
+
+  // Kunci penyimpanan riwayat permintaan layanan di localStorage.
+  STORAGE_KEY: 'ppw_week4_service_orders',
 
   /* ---------- Utilitas ---------- */
 
@@ -56,6 +60,9 @@ const App = {
     this.loadProfile();
     this.loadSkills();
     this.loadProjects();
+    this.loadServices();
+    this.bindForm();
+    this.updateOrderBadge();
   },
 
   cacheElements() {
@@ -80,7 +87,11 @@ const App = {
       profileRole: $('profileRole'),
       profileBio: $('profileBio'),
       journeyList: $('journeyList'),
-      factsList: $('factsList')
+      factsList: $('factsList'),
+      servicesCatalog: $('servicesCatalog'),
+      form: $('serviceForm'),
+      message: $('pesan'),
+      orderBadge: $('orderBadge')
     };
   },
 
@@ -102,6 +113,13 @@ const App = {
     this.el.search.addEventListener('input', () => {
       this.state.query = this.el.search.value;
       this.applyFilters();
+    });
+
+    // Katalog layanan: tombol "Tanya Paket Ini" dan "Coba Lagi" (event delegation).
+    this.el.servicesCatalog.addEventListener('click', (e) => {
+      const ask = e.target.closest('[data-service-id]');
+      if (ask) this.selectService(ask.dataset.serviceId);
+      if (e.target.closest('[data-retry-services]')) this.loadServices();
     });
 
     this.el.retry.addEventListener('click', () => this.loadProjects());
@@ -145,7 +163,8 @@ const App = {
     try {
       const skills = await ApiService.getSkills();
       this.el.skills.replaceChildren(
-        ...skills.map((skill) => {
+        // Urutkan dari teks terpanjang agar baris chip tampak rapi.
+        ...[...skills].sort((a, b) => b.name.length - a.name.length).map((skill) => {
           const li = document.createElement('li');
           li.textContent = skill.name;
           return li;
@@ -281,12 +300,15 @@ const App = {
     const tags = (p.tags || [])
       .map((t) => `<span class="badge tag-chip">${e(t)}</span>`)
       .join('');
+    // Nomor urut tetap (berdasarkan urutan di project.json), tidak berubah saat difilter.
+    const number = String(this.state.projects.indexOf(p) + 1).padStart(2, '0');
 
     return `
       <div class="col">
         <div class="card h-100 shadow-sm project-card">
           ${banner}
           <div class="card-body">
+            <div class="project-number" aria-hidden="true">${number}</div>
             <span class="badge project-badge mb-2">${e(p.role)}</span>
             <h3 class="card-title h5">${e(p.title)}</h3>
             <p class="card-text">${e(p.summary)}</p>
@@ -304,6 +326,42 @@ const App = {
 
   /* ---------- Universal Dynamic Modal ---------- */
 
+  // Galeri (Bootstrap Carousel) di dalam modal universal; hanya dipakai jika ada >= 2 gambar valid.
+  galleryHTML(proj) {
+    const e = (v) => this.escapeHTML(v);
+    const items = (Array.isArray(proj.gallery) ? proj.gallery : [])
+      .map((g) => ({ src: this.safeUrl(g && g.src), caption: (g && g.caption) || '' }))
+      .filter((g) => g.src);
+    if (items.length < 2) return '';
+
+    const indicators = items
+      .map((_, i) => `<button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="${i}"
+          class="${i === 0 ? 'active' : ''}" ${i === 0 ? 'aria-current="true"' : ''}
+          aria-label="Gambar ${i + 1}"></button>`)
+      .join('');
+    const slides = items
+      .map((g, i) => `
+        <div class="carousel-item ${i === 0 ? 'active' : ''}">
+          <img src="${e(g.src)}" alt="${e(proj.title)} - ${e(g.caption)}" loading="lazy">
+          <p class="carousel-caption-text">${e(g.caption)}</p>
+        </div>`)
+      .join('');
+
+    return `
+      <div id="projectCarousel" class="carousel slide project-carousel mb-3" aria-label="Galeri ${e(proj.title)}">
+        <div class="carousel-inner rounded">${slides}</div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Sebelumnya</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Berikutnya</span>
+        </button>
+        <div class="carousel-indicators">${indicators}</div>
+      </div>`;
+  },
+
   openProjectModal(projectId) {
     const proj = this.state.projects.find((p) => p.id === projectId);
     if (!proj) return;
@@ -313,9 +371,9 @@ const App = {
 
     this.el.modalTitle.textContent = proj.title;
 
-    const image = imageUrl
+    const image = this.galleryHTML(proj) || (imageUrl
       ? `<img src="${e(imageUrl)}" class="img-fluid rounded mb-3 w-100" alt="${e(proj.title)}">`
-      : '';
+      : '');
     const tags = (proj.tags || [])
       .map((t) => `<span class="badge tag-chip">${e(t)}</span>`)
       .join('');
@@ -355,6 +413,201 @@ const App = {
     }
 
     bootstrap.Modal.getOrCreateInstance(this.el.modal).show();
+  },
+
+  /* ---------- Layanan: katalog paket dari services.json ---------- */
+
+  async loadServices() {
+    const box = this.el.servicesCatalog;
+    box.setAttribute('aria-busy', 'true');
+    box.innerHTML = this.serviceSkeletonHTML(); // state: loading
+    try {
+      const [services] = await Promise.all([
+        ApiService.getServices(),
+        this.sleep(this.LOADING_MIN_MS)
+      ]);
+      if (!Array.isArray(services)) {
+        throw new Error('Format data layanan tidak valid.');
+      }
+      this.state.services = services;
+      this.renderServices(); // state: success atau empty
+    } catch (err) {
+      // state: error
+      box.innerHTML = `
+        <div class="col-12">
+          <div class="alert alert-danger mb-0" role="alert">
+            <h3 class="h6 alert-heading mb-1"><i class="bi bi-exclamation-triangle me-1"></i> Paket layanan gagal dimuat</h3>
+            <p class="mb-2">${this.escapeHTML(err.message)}</p>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-retry-services>Coba Lagi</button>
+          </div>
+        </div>`;
+    } finally {
+      box.setAttribute('aria-busy', 'false');
+    }
+  },
+
+  serviceSkeletonHTML() {
+    const card = `
+      <div class="col" aria-hidden="true">
+        <div class="card project-card">
+          <div class="card-body placeholder-glow">
+            <span class="placeholder col-4 mb-2"></span>
+            <span class="placeholder col-12 mb-2"></span>
+            <span class="placeholder col-8"></span>
+          </div>
+        </div>
+      </div>`;
+    return card.repeat(3);
+  },
+
+  renderServices() {
+    const box = this.el.servicesCatalog;
+    if (this.state.services.length === 0) {
+      box.innerHTML = `
+        <div class="col-12">
+          <div class="empty-state"><i class="bi bi-box-seam"></i>
+            <p class="mb-0 mt-2">Belum ada paket layanan yang tersedia.</p></div>
+        </div>`;
+      return;
+    }
+    box.innerHTML = this.state.services.map((s) => this.serviceCardHTML(s)).join('');
+  },
+
+  serviceCardHTML(s) {
+    const e = (v) => this.escapeHTML(v);
+    const features = (s.features || []).map((f) => `<li>${e(f)}</li>`).join('');
+
+    return `
+      <div class="col">
+        <div class="card h-100 shadow-sm project-card service-card">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <div class="service-icon" aria-hidden="true"><i class="bi ${this.safeIcon(s.icon)}"></i></div>
+              <h4 class="h6 card-title mb-0">${e(s.name)}</h4>
+            </div>
+            <p class="card-text small mb-2">${e(s.description)}</p>
+            <ul class="service-features">${features}</ul>
+            <div class="service-footer mt-auto pt-3 d-flex flex-wrap align-items-center justify-content-between gap-2">
+              <span class="rate-chip">Tarif: <strong>${e(s.rate)}</strong></span>
+              <button type="button" class="btn btn-sm project-btn" data-service-id="${e(s.id)}">
+                Pilih Layanan Ini
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  },
+
+  // Memilih radio "Jenis Layanan" yang sesuai, lalu menggulir ke form.
+  selectService(serviceId) {
+    const form = this.el.form;
+    if (!form) return;
+    const radio = Array.from(form.querySelectorAll('input[name="layanan"]'))
+      .find((r) => r.value === serviceId);
+    if (radio) {
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    (radio || form.elements.nama)?.focus({ preventScroll: true });
+  },
+
+  /* ---------- Form: pengiriman asinkron (fetch POST) ---------- */
+
+  bindForm() {
+    const form = this.el.form;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // tanpa full page reload
+
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        this.showToast('Formulir belum lengkap', 'Periksa kembali kolom yang wajib diisi.', 'warning');
+        return;
+      }
+
+      // Serialisasi form menjadi DTO JSON.
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const checked = form.querySelector('input[name="layanan"]:checked');
+      payload.layananLabel = checked ? checked.closest('label').textContent.trim() : '';
+      payload.setuju = form.elements.setuju.checked;
+      payload.createdAt = new Date().toISOString();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalLabel = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Mengirim...';
+
+      try {
+        const result = await ApiService.submitServiceOrder(payload);
+        const orderId = 'ORD-' + Date.now();
+        this.saveOrder({ orderId, serverRef: result.id ?? null, ...payload });
+        this.showToast('Sukses!', `Permintaan layanan berhasil diproses (${orderId}).`, 'success');
+        form.reset();
+        form.classList.remove('was-validated');
+      } catch (err) {
+        this.showToast('Gagal mengirim', 'Permintaan belum terkirim. Periksa koneksi lalu coba lagi.', 'danger');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalLabel;
+      }
+    });
+  },
+
+  /* ---------- State lokal: localStorage + badge ---------- */
+
+  getOrders() {
+    try {
+      const data = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
+      return Array.isArray(data) ? data : [];
+    } catch (err) {
+      return [];
+    }
+  },
+
+  saveOrder(order) {
+    const orders = this.getOrders();
+    orders.push(order);
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(orders));
+    } catch (err) {
+      console.warn('[Storage] Gagal menyimpan pesanan:', err);
+    }
+    this.updateOrderBadge();
+  },
+
+  updateOrderBadge() {
+    const badge = this.el.orderBadge;
+    if (!badge) return;
+    const count = this.getOrders().length;
+    badge.textContent = count;
+    badge.classList.toggle('d-none', count === 0);
+    badge.title = `${count} permintaan layanan tersimpan`;
+  },
+
+  /* ---------- Toast Bootstrap ---------- */
+
+  showToast(title, message, variant = 'success') {
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'toastContainer';
+      container.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+      document.body.appendChild(container);
+    }
+    const toast = document.createElement('div');
+    toast.className = `toast text-bg-${variant} border-0`;
+    toast.setAttribute('role', variant === 'danger' ? 'alert' : 'status');
+    toast.innerHTML = `
+      <div class="toast-header">
+        <strong class="me-auto"></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Tutup"></button>
+      </div>
+      <div class="toast-body"></div>`;
+    toast.querySelector('strong').textContent = title;      // textContent: aman dari XSS
+    toast.querySelector('.toast-body').textContent = message;
+    container.appendChild(toast);
+    toast.addEventListener('hidden.bs.toast', () => toast.remove());
+    bootstrap.Toast.getOrCreateInstance(toast, { delay: 4000 }).show();
   }
 };
 
