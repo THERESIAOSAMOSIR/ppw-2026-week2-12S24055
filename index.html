@@ -40,23 +40,13 @@
     <section id="tentang" aria-labelledby="tentang-heading" class="section section-hero">
       <div class="section-inner hero-inner">
         <div class="hero-text">
-          <p class="eyebrow">Sistem Informasi · Institut Teknologi Del</p>
-          <h1 id="tentang-heading">Theresia Oktaviani Samosir</h1>
-          <p class="role">UI/UX Design · Mobile Development · Data Analysis</p>
-          <p class="bio">
-            Mahasiswa S1 Sistem Informasi semester 5 di Institut Teknologi Del, aktif sebagai
-            anggota MPH HIMSI. Tertarik merancang antarmuka yang jelas dan mudah dipakai,
-            membangun aplikasi mobile dengan Flutter, serta membaca pola dari data untuk
-            mengambil keputusan yang lebih baik.
-          </p>
+          <p class="eyebrow" id="profileEyebrow"></p>
+          <h1 id="tentang-heading"></h1>
+          <p class="role" id="profileRole"></p>
+          <p class="bio" id="profileBio"></p>
 
           <h2 class="subheading">Perjalanan Singkat</h2>
-          <ol class="journey-list">
-            <li>Menempuh studi S1 Sistem Informasi di Institut Teknologi Del.</li>
-            <li>Bergabung sebagai anggota MPH HIMSI.</li>
-            <li>Mengikuti bootcamp Excel KarirNex - Pivot Table, VLOOKUP, SUMIFS, hingga Data Validation.</li>
-            <li>Memimpin tim MARSIADAPARI merancang PanenFair untuk kompetisi SwitchFest 2026.</li>
-          </ol>
+          <ol class="journey-list" id="journeyList"></ol>
 
           <div class="hero-cta mt-4 d-flex flex-wrap gap-3">
             <a href="#portofolio" class="btn project-btn btn-lg">Lihat Portofolio</a>
@@ -80,336 +70,32 @@
           Rekapitulasi proyek dan kompetisi yang pernah saya kerjakan, beserta peran dan hasilnya.
         </p>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-file-earmark-text"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">Anggota Tim · Analisis Sistem</span>
-                <h3 class="card-title h5">Feature Optimization - BEM IT Del Website (SRS)</h3>
-                <p class="card-text">Dokumen SyRS 60 halaman - Use Case, DFD, BPMN As-Is/To-Be.</p>
-                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalFeatureOpt">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-server"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">Backend Developer</span>
-                <h3 class="card-title h5">JExpress - Package Delivery Management System</h3>
-                <p class="card-text">Aplikasi CLI Java + PostgreSQL, dibangun dengan pendekatan OOP.</p>
-                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalJExpress">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-phone"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">Mobile Developer</span>
-                <h3 class="card-title h5">Animation Catalog App (Flutter)</h3>
-                <p class="card-text">42 animasi, CRUD, integrasi REST API - selesai.</p>
-                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalAnimasi">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-palette"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">UI/UX Designer</span>
-                <h3 class="card-title h5">Affordable Travel Package App Prototype</h3>
-                <p class="card-text">Wireframe &amp; prototipe interaktif (Figma) untuk aplikasi paket travel hemat.</p>
-                <p class="card-text"><small class="text-muted">2025 · Selesai</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalTravel">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-clipboard2-pulse"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">UI/UX Designer</span>
-                <h3 class="card-title h5">Immunization Monitoring System Prototype</h3>
-                <p class="card-text">Prototipe user-centered (Figma) untuk sistem pemantauan imunisasi.</p>
-                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalImunisasi">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-server"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">Backend Developer · Proyek Mandiri</span>
-                <h3 class="card-title h5">EduTrack - Simple LMS Platform</h3>
-                <p class="card-text">Repository API untuk platform LMS sederhana, dikembangkan mandiri.</p>
-                <p class="card-text"><small class="text-muted">2026 · Selesai</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalEduTrack">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-palette"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">Ketua Tim · UI/UX Designer</span>
-                <h3 class="card-title h5">PanenFair - SwitchFest 2026</h3>
-                <p class="card-text">Proposal &amp; rancangan UI/UX untuk kompetisi UI/UX Design SwitchFest 2026, bersama tim MARSIADAPARI.</p>
-                <p class="card-text"><small class="text-muted">2026 · Masih Berproses</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalPanenFair">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card h-100 shadow-sm project-card">
-              <div class="card-banner">
-                <i class="bi bi-pencil-square"></i>
-              </div>
-              <div class="card-body">
-                <span class="badge project-badge mb-2">Ketua Tim · Penulis</span>
-                <h3 class="card-title h5">NEUROLEKSIA - Brawijaya Essay Competition 2026</h3>
-                <p class="card-text">Esai program rehabilitasi literasi nasional berbasis neurofeedback, dari 9 bab menjadi 6 bab final.</p>
-                <p class="card-text"><small class="text-muted">2026 · Finalis</small></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pb-3">
-                <button type="button" class="btn btn-sm project-btn"
-                        data-bs-toggle="modal" data-bs-target="#modalBEC">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="modal fade" id="modalFeatureOpt" tabindex="-1" aria-labelledby="modalFeatureOptLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalFeatureOptLabel">Feature Optimization - BEM IT Del Website (SRS)</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> Anggota Tim, Analisis Sistem</p>
-                <p><strong>Tahun:</strong> 2026</p>
-                <p>Menyusun dokumen SyRS sepanjang 60 halaman, mencakup Use Case Diagram, DFD, serta BPMN As-Is dan To-Be untuk optimasi fitur website BEM IT Del.</p>
-              </div>
-              <div class="modal-footer">
-                <a href="https://drive.google.com/file/d/147bWBKGHXw5Qsel2Qm55l7Kprxl_e7JM/view?usp=sharing"
-                   target="_blank" rel="noopener noreferrer" class="btn project-btn">Lihat Dokumen</a>
-              </div>
-            </div>
+        <div class="portfolio-toolbar">
+          <div class="filter-group" id="filterGroup" role="group" aria-label="Filter kategori proyek"></div>
+          <div class="input-group search-box">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input type="search" class="form-control" id="projectSearch"
+                   placeholder="Cari proyek atau teknologi" aria-label="Cari proyek">
           </div>
         </div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
 
-        <div class="modal fade" id="modalJExpress" tabindex="-1" aria-labelledby="modalJExpressLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalJExpressLabel">JExpress - Package Delivery Management System</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> Backend Developer (OOP)</p>
-                <p><strong>Tahun:</strong> 2026</p>
-                <p>Sistem manajemen pengiriman paket berbasis CLI, dibangun dengan Java dan PostgreSQL menggunakan prinsip Object-Oriented Programming.</p>
-              </div>
-              <div class="modal-footer">
-                <span class="text-muted small">Repository bersifat privat / akademik</span>
-              </div>
-            </div>
-          </div>
+        <div id="projectError" class="alert alert-danger d-none mt-3" role="alert">
+          <h3 class="h6 alert-heading mb-1"><i class="bi bi-exclamation-triangle me-1"></i> Data proyek gagal dimuat</h3>
+          <p class="mb-2" id="projectErrorMessage"></p>
+          <button type="button" class="btn btn-sm btn-outline-danger" id="retryBtn">Coba Lagi</button>
         </div>
 
-        <div class="modal fade" id="modalAnimasi" tabindex="-1" aria-labelledby="modalAnimasiLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalAnimasiLabel">Animation Catalog App (Flutter)</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> Mobile Developer</p>
-                <p><strong>Tahun:</strong> 2026</p>
-                <p>Aplikasi katalog animasi berisi 42 koleksi animasi, dilengkapi fitur CRUD penuh dan integrasi REST API untuk pengambilan data dinamis.</p>
-              </div>
-              <div class="modal-footer">
-                <a href="https://github.com/TheresiaOktavianiSamosir/animation_collection_iss24055.git"
-                   target="_blank" rel="noopener noreferrer" class="btn project-btn">Lihat di GitHub</a>
-              </div>
-            </div>
-          </div>
+        <div id="projectEmpty" class="empty-state d-none mt-3">
+          <i class="bi bi-search"></i>
+          <p class="mb-2 mt-2">Tidak ada proyek yang cocok dengan filter atau kata kunci.</p>
+          <button type="button" class="btn btn-sm project-btn" id="resetFilterBtn">Reset Filter</button>
         </div>
 
-        <div class="modal fade" id="modalTravel" tabindex="-1" aria-labelledby="modalTravelLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalTravelLabel">Affordable Travel Package App Prototype</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> UI/UX Designer</p>
-                <p><strong>Tahun:</strong> 2025</p>
-                <p>Merancang wireframe dan prototipe interaktif di Figma untuk aplikasi pemesanan paket travel dengan harga terjangkau.</p>
-              </div>
-              <div class="modal-footer">
-                <span class="text-muted small">Tautan Figma tersedia atas permintaan</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="modalImunisasi" tabindex="-1" aria-labelledby="modalImunisasiLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalImunisasiLabel">Immunization Monitoring System Prototype</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> UI/UX Designer (Figma)</p>
-                <p><strong>Tahun:</strong> 2026</p>
-                <p>Merancang prototipe user-centered untuk sistem pemantauan imunisasi, berfokus pada kemudahan input dan pelacakan data oleh petugas kesehatan.</p>
-              </div>
-              <div class="modal-footer">
-                <span class="text-muted small">Tautan Figma tersedia atas permintaan</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="modalEduTrack" tabindex="-1" aria-labelledby="modalEduTrackLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalEduTrackLabel">EduTrack - Simple LMS Platform</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> Backend Developer (Proyek Mandiri)</p>
-                <p><strong>Tahun:</strong> 2026</p>
-                <p>Mengembangkan API untuk platform Learning Management System (LMS) sederhana sebagai proyek pengembangan diri mandiri.</p>
-              </div>
-              <div class="modal-footer">
-                <a href="https://github.com/TheresiaOktavianiSamosir/edutrack-api.git"
-                   target="_blank" rel="noopener noreferrer" class="btn project-btn">Lihat di GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="modalPanenFair" tabindex="-1" aria-labelledby="modalPanenFairLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalPanenFairLabel">PanenFair - SwitchFest 2026</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> Ketua Tim, UI/UX Designer</p>
-                <p><strong>Tim:</strong> MARSIADAPARI</p>
-                <p><strong>Status:</strong> Masih dalam proses pengerjaan (kompetisi berlangsung)</p>
-                <p>Merancang proposal dan tampilan antarmuka PanenFair sebagai entri kompetisi UI/UX Design SwitchFest 2026.</p>
-              </div>
-              <div class="modal-footer">
-                <span class="text-muted small">Tautan Figma akan ditambahkan setelah tersedia</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="modalBEC" tabindex="-1" aria-labelledby="modalBECLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalBECLabel">NEUROLEKSIA - Brawijaya Essay Competition 2026</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p><strong>Peran:</strong> Ketua Tim, Penulis</p>
-                <p><strong>Hasil:</strong> Finalis</p>
-                <p>Esai berjudul "NEUROLEKSIA" mengusulkan program rehabilitasi literasi nasional berbasis neurofeedback. Naskah dikonsolidasikan dari 9 bab menjadi 6 bab dalam format .docx untuk pengumpulan resmi.</p>
-              </div>
-              <div class="modal-footer">
-                <span class="text-muted small">Dokumen esai tersedia atas permintaan</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="projectGrid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2" aria-busy="true"></div>
 
         <h3 class="subheading">Keahlian Utama</h3>
-        <ul class="skills-list">
-          <li>UI/UX Design (Figma)</li>
-          <li>Flutter &amp; Mobile Development</li>
-          <li>Java &amp; Pemrograman Berorientasi Objek</li>
-          <li>Business Process Modeling (BPMN)</li>
-          <li>Data &amp; Database (Python, MySQL)</li>
-          <li>HTML5 &amp; CSS3</li>
-          <li>Git &amp; GitHub</li>
-        </ul>
+        <ul class="skills-list" id="skillsList"></ul>
       </div>
     </section>
 
@@ -511,16 +197,7 @@
   <aside aria-label="Informasi Tambahan" class="site-aside">
     <div class="aside-inner">
       <h2 class="aside-heading">Info Cepat</h2>
-      <dl class="quick-facts">
-        <dt>Program Studi</dt>
-        <dd>S1 Sistem Informasi (Semester 5)</dd>
-        <dt>Kampus</dt>
-        <dd>Institut Teknologi Del</dd>
-        <dt>Organisasi</dt>
-        <dd>MPH HIMSI</dd>
-        <dt>Fokus</dt>
-        <dd>UI/UX Design, Flutter, Data Analysis</dd>
-      </dl>
+      <dl class="quick-facts" id="factsList"></dl>
     </div>
   </aside>
 
@@ -534,6 +211,21 @@
       </nav>
     </div>
   </footer>
+
+  <!-- Universal Dynamic Modal: 1 modal tunggal untuk seluruh proyek -->
+  <div class="modal fade" id="universalProjectModal" tabindex="-1"
+       aria-labelledby="projectModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="projectModalTitle">Judul Proyek</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="projectModalBody"></div>
+        <div class="modal-footer" id="projectModalFooter"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -552,6 +244,8 @@
     })()
   </script>
 
-<script src="js/api-service.js"></script>
+  <script src="js/api-service.js"></script>
+  <script src="js/app.js"></script>
+
 </body>
 </html>
