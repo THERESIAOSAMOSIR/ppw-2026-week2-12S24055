@@ -27,7 +27,7 @@ const ApiService = {
   },
 
   getProjects() {
-    return this.fetchJSON('project.json');
+        return this.fetchJSON('projects.json');
   },
 
   getServices() {
