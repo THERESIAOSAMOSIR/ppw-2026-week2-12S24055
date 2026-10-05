@@ -173,7 +173,7 @@ Skrip inline sudah dihapus dari `index.html`, sehingga `script-src` tidak membut
 
 <div align="justify">
 
-**Kondisi pengujian:** Chrome versi [ISI DARI chrome://version], tab Network, tanpa throttling, diuji pada URL GitHub Pages. Cold Load: centang *Disable cache*, lalu hard reload (Ctrl+Shift+R). Warm Load: reload biasa (F5) setelah cold load.
+**Kondisi pengujian:** Microsoft Edge versi 154.0.4258.53 (64-bit, Chromium 154.0.8037.93) pada Windows 11, tab Network DevTools, tanpa throttling, diuji pada URL GitHub Pages. Cold Load: centang *Disable cache*, lalu hard reload (Ctrl+Shift+R). Warm Load: reload biasa (F5) setelah cold load.
 
 </div>
 
