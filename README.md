@@ -5,7 +5,11 @@
 **Live Demo (GitHub Pages):** https://theresiaosamosir.github.io/ppw-2026-week2-12S24055/
 **Branch:** `PPW-2026-Week4_12S24055`
 
+<div align="justify">
+
 Proyek ini melanjutkan portofolio Minggu 3 (Bootstrap 5.3). Pada Minggu 3, seluruh kartu, modal, dan katalog layanan ditulis langsung di `index.html` (monolitik statis). Pada Minggu 4, semua isi tersebut dipindahkan ke file JSON terpisah dan dirender oleh JavaScript di browser (Dynamic Client-Side Rendering), sehingga `index.html` hanya menjadi kerangka halaman.
+
+</div>
 
 ---
 
@@ -34,8 +38,8 @@ ppw-2026-week4-12S24055/
 
 ## 2. Diagram Arsitektur Sistem (C4 Container Model)
 
-   ![Diagram C4 Container - Personal Portfolio & Service Portal](diagram-c4-container.png)
-   
+![Diagram C4 Container - Personal Portfolio & Service Portal](diagram-c4-container.png)
+
 **Pembagian lapisan (Multi-Tier):**
 
 | Tier | Komponen | Tanggung jawab |
@@ -50,7 +54,11 @@ ppw-2026-week4-12S24055/
 
 ### 3.1 Separation of Concerns (SoC)
 
+<div align="justify">
+
 Pada Minggu 3, struktur, data, dan tampilan bercampur dalam satu file `index.html`. Menambah satu proyek berarti mengedit HTML secara langsung, yang tidak praktis dan rawan kesalahan. Pada Minggu 4, tanggung jawab dipisah menjadi empat bagian:
+
+</div>
 
 1. **Struktur (HTML):** `index.html` hanya memuat kerangka dan wadah kosong seperti `#projectGrid`, `#servicesCatalog`, dan `#skillsList`.
 2. **Data (JSON):** isi portofolio berada di folder `/data`. Menambah proyek cukup dengan menambah satu objek di `projects.json`.
@@ -59,7 +67,11 @@ Pada Minggu 3, struktur, data, dan tampilan bercampur dalam satu file `index.htm
 
 ### 3.2 Monolith vs Microservices
 
+<div align="justify">
+
 Arsitektur monolitik menyatukan seluruh fungsi dalam satu unit yang di-deploy bersama. Sederhana untuk dibangun, tetapi perubahan kecil memengaruhi seluruh aplikasi dan skalabilitasnya terbatas. Microservices memecah sistem menjadi layanan kecil yang mandiri dan berkomunikasi lewat API, sehingga dapat dikembangkan dan di-scale terpisah, dengan harga kompleksitas operasional yang lebih tinggi. Proyek ini belum microservices, tetapi sudah mengambil prinsip dasarnya: frontend dan penyedia data dipisahkan lewat kontrak JSON, sehingga masing-masing dapat diganti secara independen.
+
+</div>
 
 ### 3.3 SSR vs CSR vs Jamstack
 
@@ -71,7 +83,11 @@ Arsitektur monolitik menyatukan seluruh fungsi dalam satu unit yang di-deploy be
 | Interaktivitas | Full reload tiap navigasi | Mulus | Mulus dan reaktif |
 | Hosting | Server aktif 24/7 | CDN statis (GitHub Pages) | CDN statis + serverless |
 
+<div align="justify">
+
 Proyek ini memakai CSR di atas hosting statis ala Jamstack. Kelemahannya, isi kartu baru tampil setelah `app.js` berjalan dan JSON selesai dimuat, sehingga ditangani dengan loading state.
+
+</div>
 
 ---
 
@@ -86,15 +102,27 @@ Proyek ini memakai CSR di atas hosting statis ala Jamstack. Kelemahannya, isi ka
 | Empty | Filter atau pencarian tidak menghasilkan data | Pesan "tidak ada hasil" |
 | Error | Fetch gagal atau HTTP bukan 2xx | Alert peringatan dengan tombol "Coba Lagi" |
 
+<div align="justify">
+
 Filter kategori dan pencarian bekerja instan tanpa memuat ulang halaman.
+
+</div>
 
 ### 4.2 Universal Dynamic Modal
 
+<div align="justify">
+
 Hanya ada satu elemen modal (`#universalProjectModal`) di `index.html`. Isinya diinjeksi lewat `openProjectModal(projectId)` berdasarkan ID proyek yang diklik, memakai `bootstrap.Modal.getOrCreateInstance()`. Proyek dengan beberapa gambar ditampilkan dalam galeri geser.
+
+</div>
 
 ### 4.3 Decoupled Form REST dan State Lokal
 
+<div align="justify">
+
 Form layanan dikirim dengan `fetch` POST berformat JSON (DTO) tanpa reload halaman. Tombol submit dinonaktifkan dan berubah menjadi "Mengirim..." selama proses, lalu Bootstrap Toast menampilkan hasilnya. Pesanan disimpan ke `localStorage` dan jumlahnya tampil pada badge "Pesanan" di navbar yang langsung ter-update.
+
+</div>
 
 ### 4.4 Keamanan Sisi Klien
 
@@ -116,7 +144,11 @@ object-src  'none';
 base-uri    'self';
 ```
 
+<div align="justify">
+
 Skrip inline sudah dihapus dari `index.html`, sehingga `script-src` tidak membutuhkan `'unsafe-inline'`.
+
+</div>
 
 ---
 
@@ -139,7 +171,11 @@ Skrip inline sudah dihapus dari `index.html`, sehingga `script-src` tidak membut
 
 ## 6. Hasil Profiling Jaringan (Chrome DevTools)
 
+<div align="justify">
+
 **Kondisi pengujian:** Chrome versi [ISI DARI chrome://version], tab Network, tanpa throttling, diuji pada URL GitHub Pages. Cold Load: centang *Disable cache*, lalu hard reload (Ctrl+Shift+R). Warm Load: reload biasa (F5) setelah cold load.
+
+</div>
 
 ### 6.1 Cold Load vs Warm Load
 
@@ -152,7 +188,11 @@ Skrip inline sudah dihapus dari `index.html`, sehingga `script-src` tidak membut
 | Jumlah request | 23 | 23 (1 ke server, 22 dari cache) |
 | Data yang ditransfer | ± 1,2 MB | 302 B |
 
+<div align="justify">
+
 Catatan: kecepatan jaringan saat pengujian bervariasi. Cold load pada tabel ini berlangsung pada koneksi yang lambat, sehingga waktu absolutnya besar. Angka dalam tabel berasal dari satu pasang pengukuran (cold lalu warm), sehingga perbandingannya dilakukan pada kondisi koneksi yang sama.
+
+</div>
 
 ### 6.2 Analisis Caching HTTP (RFC 9111)
 
@@ -165,7 +205,11 @@ Catatan: kecepatan jaringan saat pengujian bervariasi. Cold load pada tabel ini 
 | `data/project.json` | 200 | 200 (disk cache) | `max-age=600` | `W/"6ac30b69-1c66"` | 2,7 KB |
 | `data/services.json` | 200 | 200 (disk cache) | `max-age=600` | `W/"6ac30b69-427"` | 1,1 KB |
 
+<div align="justify">
+
 Ukuran adalah jumlah byte yang ditransfer saat cold load. Status "memory cache" dan "disk cache" berarti browser memakai salinan lokal tanpa menghubungi server.
+
+</div>
 
 ### 6.3 Screenshot Waterfall
 
@@ -173,9 +217,15 @@ Ukuran adalah jumlah byte yang ditransfer saat cold load. Status "memory cache" 
 |---|---|
 | ![Waterfall cold load](images/waterfall-cold.png) | ![Waterfall warm load](images/waterfall-warm.png) |
 
+<div align="justify">
+
 Screenshot waterfall berasal dari pengujian terpisah, dan waktu absolutnya berbeda dari tabel 6.1 karena kecepatan jaringan bervariasi. Pada kedua screenshot, jumlah request sama (17 request).
 
+</div>
+
 ### 6.4 Analisis
+
+<div align="justify">
 
 **Perbandingan cold dan warm.** Pada warm load, data yang ditransfer turun dari sekitar 1,2 MB menjadi 302 B. Waktu Load turun dari 83563 ms menjadi 1503 ms (sekitar 98%), DOMContentLoaded turun dari 42371 ms menjadi 1398 ms (sekitar 97%), dan FCP turun dari 7652 ms menjadi 1392 ms (sekitar 82%). TTFB `index.html` tidak membaik (1071 ms menjadi 1152 ms) karena dokumen utama tetap harus dikonfirmasi ke server pada setiap reload.
 
@@ -186,6 +236,8 @@ Screenshot waterfall berasal dari pengujian terpisah, dan waktu absolutnya berbe
 **Pengamatan waterfall.** Pada waterfall cold load, seluruh berkas diunduh dari jaringan dan batang unduhan terlihat panjang, terutama `bootstrap.min.css` dan `bootstrap.bundle.min.js` yang membutuhkan lebih dari 13 detik pada koneksi yang lambat. Empat berkas JSON baru diminta setelah halaman siap, karena dipanggil oleh `api-service.js` melalui `fetch`. Pada warm load, 12 berkas statis dilayani dari memory cache dengan waktu 0 ms dan empat berkas JSON dari disk cache (8 sampai 27 ms). Satu-satunya permintaan jaringan adalah `index.html` yang divalidasi dengan status 304, sehingga data yang ditransfer hanya sekitar 309 B.
 
 **Keterbatasan.** Hasil berasal dari satu pasang pengukuran pada koneksi yang tidak stabil, sehingga selisih cold dan warm terlihat sangat besar. Pada koneksi yang lebih baik, selisihnya akan lebih kecil, tetapi pola dasarnya tetap sama: caching mengurangi jumlah dan ukuran data yang harus ditransfer dari jaringan.
+
+</div>
 
 ---
 
