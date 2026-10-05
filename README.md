@@ -139,43 +139,53 @@ Skrip inline sudah dihapus dari `index.html`, sehingga `script-src` tidak membut
 
 ## 6. Hasil Profiling Jaringan (Chrome DevTools)
 
-**Kondisi pengujian:** Chrome versi `___`, tab Network, tanpa throttling, diuji pada URL GitHub Pages.
-Cold Load: centang *Disable cache*, lalu hard reload (Ctrl+Shift+R). Warm Load: reload biasa (F5) setelah cold load.
+**Kondisi pengujian:** Chrome versi [ISI DARI chrome://version], tab Network, tanpa throttling, diuji pada URL GitHub Pages. Cold Load: centang *Disable cache*, lalu hard reload (Ctrl+Shift+R). Warm Load: reload biasa (F5) setelah cold load.
 
 ### 6.1 Cold Load vs Warm Load
 
 | Metrik | Cold Load | Warm Load |
 |---|---|---|
-| TTFB `index.html` | ___ ms | ___ ms |
-| First Contentful Paint (FCP) | ___ ms | ___ ms |
-| DOMContentLoaded | ___ ms | ___ ms |
-| Load | ___ ms | ___ ms |
-| Jumlah request | ___ | ___ |
-| Data yang ditransfer | ___ KB | ___ KB |
+| TTFB `index.html` | 1071 ms | 1152 ms |
+| First Contentful Paint (FCP) | 7652 ms | 1392 ms |
+| DOMContentLoaded | 42371 ms | 1398 ms |
+| Load | 83563 ms | 1503 ms |
+| Jumlah request | 23 | 23 (1 ke server, 22 dari cache) |
+| Data yang ditransfer | ± 1,2 MB | 302 B |
+
+Catatan: kecepatan jaringan saat pengujian bervariasi. Cold load pada tabel ini berlangsung pada koneksi yang lambat, sehingga waktu absolutnya besar. Angka dalam tabel berasal dari satu pasang pengukuran (cold lalu warm), sehingga perbandingannya dilakukan pada kondisi koneksi yang sama.
 
 ### 6.2 Analisis Caching HTTP (RFC 9111)
 
 | Berkas | Status Cold | Status Warm | Cache-Control | ETag | Ukuran |
 |---|---|---|---|---|---|
-| `index.html` | 200 | ___ | ___ | ___ | ___ KB |
-| `style.css` | 200 | ___ | ___ | ___ | ___ KB |
-| `js/app.js` | 200 | ___ | ___ | ___ | ___ KB |
-| `js/api-service.js` | 200 | ___ | ___ | ___ | ___ KB |
-| `data/projects.json` | 200 | ___ | ___ | ___ | ___ KB |
-| `data/services.json` | 200 | ___ | ___ | ___ | ___ KB |
+| `index.html` | 200 | 304 | `max-age=600` | `W/"6ac30b69-2e33"` | 12,4 KB |
+| `style.css` | 200 | 200 (memory cache) | `max-age=600` | `W/"6ac30b69-414a"` | 17,3 KB |
+| `js/app.js` | 200 | 200 (memory cache) | `max-age=600` | `W/"6ac30b69-54c3"` | 7,1 KB |
+| `js/api-service.js` | 200 | 200 (memory cache) | `max-age=600` | `W/"6ac30b69-6ea"` | 1,4 KB |
+| `data/project.json` | 200 | 200 (disk cache) | `max-age=600` | `W/"6ac30b69-1c66"` | 2,7 KB |
+| `data/services.json` | 200 | 200 (disk cache) | `max-age=600` | `W/"6ac30b69-427"` | 1,1 KB |
+
+Ukuran adalah jumlah byte yang ditransfer saat cold load. Status "memory cache" dan "disk cache" berarti browser memakai salinan lokal tanpa menghubungi server.
 
 ### 6.3 Screenshot Waterfall
 
 | Cold Load | Warm Load |
 |---|---|
-| ![Waterfall cold load](docs/screenshots/waterfall-cold.png) | ![Waterfall warm load](docs/screenshots/waterfall-warm.png) |
+| ![Waterfall cold load](images/waterfall-cold.png) | ![Waterfall warm load](images/waterfall-warm.png) |
+
+Screenshot waterfall berasal dari pengujian terpisah, dan waktu absolutnya berbeda dari tabel 6.1 karena kecepatan jaringan bervariasi. Pada kedua screenshot, jumlah request sama (17 request).
 
 ### 6.4 Analisis
 
-<!-- TODO: isi 3-5 kalimat dari hasil pengukuran:
-- Kenapa warm load lebih cepat (cache browser atau 304 Not Modified dengan body kosong)
-- Urutan waterfall: HTML, CSS/JS, lalu JSON (JSON baru diminta setelah app.js berjalan)
-- Pengaruh CSR ke FCP: TTFB rendah karena HTML kecil, tetapi kartu baru muncul setelah JSON selesai dimuat -->
+**Perbandingan cold dan warm.** Pada warm load, data yang ditransfer turun dari sekitar 1,2 MB menjadi 302 B. Waktu Load turun dari 83563 ms menjadi 1503 ms (sekitar 98%), DOMContentLoaded turun dari 42371 ms menjadi 1398 ms (sekitar 97%), dan FCP turun dari 7652 ms menjadi 1392 ms (sekitar 82%). TTFB `index.html` tidak membaik (1071 ms menjadi 1152 ms) karena dokumen utama tetap harus dikonfirmasi ke server pada setiap reload.
+
+**Mekanisme caching.** Seluruh berkas yang diperiksa (`index.html`, `style.css`, `js/app.js`, `js/api-service.js`, `data/project.json`, dan `data/services.json`) dikirim GitHub Pages dengan header `Cache-Control: max-age=600`. Menurut RFC 9111, respons dianggap segar selama 600 detik (10 menit) sejak diterima, dan selama itu browser boleh memakai salinan lokal tanpa bertanya ke server. Warm load dilakukan dalam rentang waktu tersebut, sehingga `style.css`, `app.js`, dan `api-service.js` dilayani dari memory cache dan berkas JSON dari disk cache, tanpa permintaan jaringan.
+
+**Validasi ulang.** Pengecualiannya adalah `index.html`, yang berstatus 304 dengan ukuran transfer sekitar 0,3 KB. Pada reload biasa, Chrome memvalidasi ulang dokumen utama dengan permintaan bersyarat: browser mengirim ETag sebelumnya melalui `If-None-Match`, lalu server menjawab 304 Not Modified tanpa mengirim ulang isi berkas karena ETag `W/"6ac30b69-2e33"` masih cocok. Awalan `W/` menandakan weak validator, yaitu isi berkas dianggap setara secara semantik. Setelah `max-age` habis, berkas lain juga akan divalidasi dengan mekanisme ETag yang sama.
+
+**Pengamatan waterfall.** Pada waterfall cold load, seluruh berkas diunduh dari jaringan dan batang unduhan terlihat panjang, terutama `bootstrap.min.css` dan `bootstrap.bundle.min.js` yang membutuhkan lebih dari 13 detik pada koneksi yang lambat. Empat berkas JSON baru diminta setelah halaman siap, karena dipanggil oleh `api-service.js` melalui `fetch`. Pada warm load, 12 berkas statis dilayani dari memory cache dengan waktu 0 ms dan empat berkas JSON dari disk cache (8 sampai 27 ms). Satu-satunya permintaan jaringan adalah `index.html` yang divalidasi dengan status 304, sehingga data yang ditransfer hanya sekitar 309 B.
+
+**Keterbatasan.** Hasil berasal dari satu pasang pengukuran pada koneksi yang tidak stabil, sehingga selisih cold dan warm terlihat sangat besar. Pada koneksi yang lebih baik, selisihnya akan lebih kecil, tetapi pola dasarnya tetap sama: caching mengurangi jumlah dan ukuran data yang harus ditransfer dari jaringan.
 
 ---
 
