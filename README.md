@@ -24,7 +24,9 @@ ppw-2026-week4-12S24055/
 │   ├── api-service.js      # Data Access Layer: fetch, error handling, POST
 │   └── app.js              # Presentation Layer: DOM, rendering, event, modal, form
 ├── images/                 # Gambar dan foto proyek
-├── docs/screenshots/       # Screenshot waterfall DevTools
+├── docs/
+│   ├── architecture-c4.png # Diagram C4 Container
+│   └── screenshots/        # Screenshot waterfall DevTools
 └── README.md
 ```
 
@@ -32,35 +34,7 @@ ppw-2026-week4-12S24055/
 
 ## 2. Diagram Arsitektur Sistem (C4 Container Model)
 
-```mermaid
-C4Container
-    title Diagram Container - Personal Portfolio & Service Portal (Week 4)
-
-    Person(user, "Pengunjung", "Membuka portofolio dan mengirim permintaan layanan")
-
-    System_Boundary(browser, "Browser Pengguna (Client)") {
-        Container(spa, "Web App (CSR)", "HTML5, Bootstrap 5.3, JavaScript ES6+", "app.js: render DOM, filter, modal, form, toast, UI states")
-        Container(api, "Data Access Layer", "api-service.js, Fetch API", "GET JSON, POST DTO, penanganan error HTTP")
-        ContainerDb(ls, "localStorage", "Web Storage", "Riwayat permintaan layanan")
-    }
-
-    System_Boundary(host, "GitHub Pages (Static Server)") {
-        Container(static, "Static Server", "GitHub Pages origin", "Menyajikan index.html, style.css, js/, images/")
-        ContainerDb(json, "JSON Providers", "/data/*.json", "profile, projects, services, keahlian (mock RESTful data layer)")
-    }
-
-    System_Ext(cdn, "CDN Edge", "GitHub Pages CDN, jsDelivr, Google Fonts", "Distribusi aset statis, Bootstrap, Bootstrap Icons, font")
-    System_Ext(rest, "Mock REST API", "jsonplaceholder.typicode.com", "POST /posts untuk simulasi pengiriman pesanan")
-
-    Rel(user, spa, "Berinteraksi dengan", "Browser")
-    Rel(spa, static, "Meminta HTML shell dan aset", "HTTPS")
-    Rel(static, cdn, "Disajikan melalui", "HTTPS")
-    Rel(spa, cdn, "Memuat library dan font", "HTTPS")
-    Rel(spa, api, "Memanggil", "Fungsi JS")
-    Rel(api, json, "GET data", "fetch, async/await, JSON")
-    Rel(api, rest, "POST DTO", "fetch, async/await, JSON")
-    Rel(spa, ls, "Simpan dan baca pesanan", "Web Storage API")
-```
+![Diagram C4 Container - Personal Portfolio & Service Portal](docs/architecture-c4.png)
 
 **Pembagian lapisan (Multi-Tier):**
 
