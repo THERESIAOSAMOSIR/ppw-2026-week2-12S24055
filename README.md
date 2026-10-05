@@ -34,8 +34,8 @@ ppw-2026-week4-12S24055/
 
 ## 2. Diagram Arsitektur Sistem (C4 Container Model)
 
-![Diagram C4 Container - Personal Portfolio & Service Portal](docs/architecture-c4.png)
-
+   ![Diagram C4 Container - Personal Portfolio & Service Portal](diagram-c4-container.png)
+   
 **Pembagian lapisan (Multi-Tier):**
 
 | Tier | Komponen | Tanggung jawab |
